@@ -1,0 +1,170 @@
+@extends('layouts.base')
+
+@section('css')
+    <link href="{{ asset('bower_components/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+@endsection
+
+@section('content')
+
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="white-box">
+            <h3 class="box-title">Pedido de Pacote</h3>
+            <p class="text-muted m-b-30">Informe todos dados referentes ao Pedido </p>
+            <div class="vtabs">
+                <ul class="nav tabs-vertical">
+                    <li class="tab active">
+                        <a data-toggle="tab" href="#basicas" aria-expanded="true"> <span class="visible-xs"><i class="ti-home"></i></span> <span class="hidden-xs">Informaços do Pedido</span> </a>
+                    </li>
+                    <li class="tab">
+                        <a data-toggle="tab" href="#viajantes" aria-expanded="false"> <span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">Viajantes</span> </a>
+                    </li>
+                    <li class="tab">
+                        <a aria-expanded="false" data-toggle="tab" href="#contacto"> <span class="visible-xs"><i class="ti-email"></i></span> <span class="hidden-xs">Contacto</span> </a>
+                    </li>
+                    <li class="tab">
+                            <a aria-expanded="false" data-toggle="tab" href="#passagens"> <span class="visible-xs"><i class="ti-email"></i></span> <span class="hidden-xs">Passagens</span> </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="basicas" class="tab-pane active">
+                                <div class="panel panel-info">
+                                            <div class="panel-heading"> 
+                                                Insira os dados do Pacote
+                                            </div>
+                                            <div class="panel-wrapper collapse in" aria-expanded="true">
+                                                <div class="panel-body">
+                                                    <form action="#" class="form-material form-horizontal">
+                                                            {{ csrf_field() }}
+                                                        <div class="form-body">
+                                                            <h3 class="box-title">Informaçao sobre os pontos</h3>
+                                                            <hr class="m-t-0 m-b-40">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label">Numero de Viajantes</label>
+                                                                        
+                                                                            <input type="text" class="form-control" placeholder=""> <span class="help-block">Informe o Numero de viajantes no campo acima </span> 
+                                                                       
+                                                                    </div>
+                                                                </div>
+                                                                <!--/span-->
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label">Meio de Transporte</label>
+                                                                        
+                                                                            <input type="text" class="form-control" placeholder=""> <span class="help-block"> Pode indicar o meio de Transporte preferencial </span> 
+                                                                       
+                                                                    </div>
+                                                                </div>
+                                                                <!--/span-->
+                                                            </div>
+                                                            <!--/row-->
+                                                            <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label class="control-label">Ponto de Partida</label>
+                                                                           
+                                                                                <input type="text" class="form-control" placeholder=""> <span class="help-block">Informe o ponto de partida </span> 
+                                                                            
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--/span-->
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label class="control-label">Destino</label>
+                                                                           
+                                                                                <input type="text" class="form-control" placeholder=""> <span class="help-block"> Informe o ponto de partida </span> 
+                                                                           
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--/span-->
+                                                            </div>
+                                                
+                                                            <!--/row-->
+                                                            
+                                                            <h3 class="box-title">Detalhes</h3>
+                                                            <hr class="m-t-0 m-b-40">
+                                                            <div class="row">
+                                                                    <div class="col-md-6">
+                                                                            <div class="example">
+                                                                                    <label class="control-label">Duraçao do Pacote</label>
+                                                                                    <p class="text-muted m-b-20"> Selecione o principio e o fim da Estadia no destino</p>
+                                                                                    <div class="input-daterange input-group" id="date-range">
+                                                                                        <input type="text" class="form-control" name="start" /> <span class="input-group-addon bg-info b-0 text-white">Até</span>
+                                                                                        <input type="text" class="form-control" name="end" /> </div>
+                                                                                </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="control-label">Descriçao</label>
+                                                                                <textarea class="form-control" rows="5"></textarea>
+                                                                            </div>
+                                                                    </div>
+                                                                        <!--/span-->
+
+                                                            </div>
+                                                            
+                                                            <!--/row-->
+                                                        </div>
+                                                        <div class="form-actions">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="row">
+                                                                        <div class="col-md-offset-3 col-md-9">
+                                                                            <button type="submit" class="btn btn-success">Submit</button>
+                                                                            <button type="button" class="btn btn-default">Cancel</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                    </div>
+                    <div id="viajantes" class="tab-pane">
+                        <div class="row" style="margin: auto;">
+                            <h1 class="text-warning">Adicione os dados básicos do pacote primeiro</h1 class="text-warning">
+                        </div>
+                    </div>
+                    <div id="contacto" class="tab-pane">
+                            <div class="row" style="margin: auto;">
+                                    <h1 class="text-warning">Adicione os dados básicos do pacote primeiro</h1 class="text-warning">
+                            </div>
+                    </div>
+                    <div id="passagens" class="tab-pane">
+                            <div class="row" style="margin: auto;">
+                                    <h1 class="text-warning">Adicione os dados básicos do pacote primeiro</h1 class="text-warning">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('scripts')
+ 
+<script src="{{  asset('bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{  asset('bower_components/moment/moment.js') }}"></script>
+<script src="{{  asset('bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+<script type="text/javascript">
+
+        // Date Picker
+        jQuery('.mydatepicker, #datepicker').datepicker();
+        jQuery('#datepicker-autoclose').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        });
+        jQuery('#date-range').datepicker({
+            toggleActive: true
+        });
+        jQuery('#datepicker-inline').datepicker({
+            todayHighlight: true
+        });
+
+</script>
+    <script src="{{  asset('bower_components/styleswitcher/jQuery.style.switcher.js') }}"></script>
+@endsection
