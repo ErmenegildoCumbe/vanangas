@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/template/favicon.png') }}">
-    <title>Vafanas</title>
+    <title>Vanangas</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('css/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- This is Sidebar menu CSS -->
@@ -193,7 +193,7 @@
                         </div>
                     </div>
                 <ul class="nav" id="side-menu">
-                    <li><a href="home" class="waves-effect active"><i class="material-icons">home </i><span class="hide-menu"> link type </span></a> </li>
+                    <li><a href="/home" class="waves-effect active"><i class="material-icons">home </i><span class="hide-menu"> link type </span></a> </li>
                     <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Pacotes de Viagem<span class="fa arrow"></span><span class="label label-rouded label-purple pull-right">2</span></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="{{ route('pacote.create') }}"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Criar Novo</span></a></li>
@@ -257,7 +257,7 @@
 
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; Vafanas </footer>
+            <footer class="footer text-center"> 2018 &copy; Vanangas </footer>
         </div>
         <!-- /#page-wrapper -->
     </div>

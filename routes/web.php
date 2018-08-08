@@ -22,7 +22,7 @@ Route::get('/home', function () {
 Route::get('/detalhes', function () {
     return view('pacotes.detalhes');
 });
-Route::get('pacote/editimage', function () {
+Route::get('pacote/{id}/editimage', function () {
     return view('pacotes.editimages');
 });
 Route::get('pacote/requisitar', function () {

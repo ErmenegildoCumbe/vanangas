@@ -372,7 +372,25 @@
                     </div>
                     <div id="passagens" class="tab-pane">
                             <div class="row" style="margin: auto;">
-                                    <h1 class="text-warning">Adicione os dados básicos do pacote primeiro</h1 class="text-warning">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="panel panel-primary block6">
+                                        <div class="panel-heading"> Passagem
+                                            <div class="pull-right"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> </div>
+                                        </div>
+                                        <div class="panel-wrapper collapse in" aria-expanded="true">
+                                            <div class="panel-body">
+                                                <div class="col-md-6">
+                                                    <h5>Encontre a passagem a baixo</h5>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h5>Informaçoes adicionais sobre a Passagem</h5>
+                                                </div>
+                                            </div>
+                                            <div class="panel-footer"> 07-08-2018 </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.col-lg-4 -->
                             </div>
                     </div>
                 </div>
