@@ -31,5 +31,11 @@ Route::get('pacote/requisitar', function () {
 Route::get('pedidoPacote/pendentes', function () {
     return view('pedidospacote.meuspedidos.pendentes');
 })->name('pedidospendentes'); 
+Route::get('pedidoPacote/confirmados', function () {
+    return view('pedidospacote.meuspedidos.confirmados');
+})->name('pedidosconfirmados'); 
+Route::get('pedidoPacote/cancelados', function () {
+    return view('pedidospacote.meuspedidos.cancelados');
+})->name('pedidoscancelados'); 
 Route::resource('pacote', 'PacoteController');
 Route::resource('pedidoPacote', 'PedidoPacoteController');

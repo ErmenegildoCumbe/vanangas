@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/template/favicon.png') }}">
-    <title>Vafanas</title>
+    <title>Vanangas</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('css/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- This is Sidebar menu CSS -->
@@ -201,9 +201,9 @@
                             <li><a href="{{ route('pedidoPacote.create') }}"><i class="fa-fw">S</i><span class="hide-menu">Requisitar Pacote</span></a></li>
                             <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="&#xe008;" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Meus Pedidos </span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
-                                    <li> <a href="javascript:void(0)"><i class=" fa-fw">T</i><span class="hide-menu">Pendentes</span></a> </li>
-                                    <li> <a href="javascript:void(0)"><i class=" fa-fw">M</i><span class="hide-menu">Confirmados</span></a> </li>
-                                    <li> <a href="javascript:void(0)"><i class=" fa-fw">R</i><span class="hide-menu">Cancelados</span></a> </li>
+                                    <li> <a href="{{ route('pedidospendentes') }}"><i class=" fa-fw">T</i><span class="hide-menu">Pendentes</span></a> </li>
+                                    <li> <a href="{{ route('pedidosconfirmados') }}"><i class=" fa-fw">M</i><span class="hide-menu">Confirmados</span></a> </li>
+                                    <li> <a href="{{ route('pedidoscancelados') }}"><i class=" fa-fw">R</i><span class="hide-menu">Cancelados</span></a> </li>
                                     
                                 </ul>
                             </li>
@@ -250,14 +250,13 @@
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
-               
-               
+                               
                     @yield("content")
                
 
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; Vafanas </footer>
+            <footer class="footer text-center"> 2018 &copy; Vanangas </footer>
         </div>
         <!-- /#page-wrapper -->
     </div>
