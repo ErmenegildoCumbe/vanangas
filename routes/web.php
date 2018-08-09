@@ -27,6 +27,9 @@ Route::get('pacote/editimage', function () {
 });
 Route::get('pacote/requisitar', function () {
     return view('pacotes.requisitar');
-}); 
+});
+Route::get('pedidoPacote/pendentes', function () {
+    return view('pedidospacote.meuspedidos.pendentes');
+})->name('pedidospendentes'); 
 Route::resource('pacote', 'PacoteController');
 Route::resource('pedidoPacote', 'PedidoPacoteController');
