@@ -5,6 +5,26 @@
     rel="stylesheet">
 @endsection
 @section('content')
+
+{{-- cabecalho da pagina --}}
+<div class="row bg-title">
+        <!-- .page title -->
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Início</h4> </div>
+        <!-- /.page title -->
+        <!-- .breadcrumb -->
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> 
+            <button class="right-side-toggle waves-effect waves-light btn-info btn-circle pull-right m-l-20"><i class="ti-settings text-white"></i></button>
+            
+            <ol class="breadcrumb">
+                <li><a href="#">Vanangas</a></li>
+                <li><a href="#">Pacotes</a></li>                
+                <li class="active">Disponíveis</li>
+            </ol>
+        </div>
+        <!-- /.breadcrumb -->
+    </div>
+    {{-- conteudo --}}
 <div class="col-md-12">
         <div class="white-box">
             <h3 class="box-title">Lista de pacotes de viagem disponíveis</h3> 

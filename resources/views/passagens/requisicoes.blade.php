@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-{{-- cabecalho da pagina --}}
-<div class="row bg-title">
+ {{-- cabecalho da pagina --}}
+ <div class="row bg-title">
         <!-- .page title -->
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
             <h4 class="page-title">Início</h4> </div>
@@ -17,9 +17,8 @@
             
             <ol class="breadcrumb">
                 <li><a href="#">Vanangas</a></li>
-                <li><a href="#">Pedidos de Pacote</a></li>
-                <li><a href="#">Meus Pedidos</a></li>
-                <li class="active">Cancelados</li>
+                <li><a href="#">Passagens</a></li>                
+                <li class="active">Requisiçoes</li>
             </ol>
         </div>
         <!-- /.breadcrumb -->
@@ -28,9 +27,9 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel">
-            <div class="panel-heading">Pedidos de Pacotes de Viagem Cancelados</div>
+            <div class="panel-heading">Pedidos de Pacotes de Viagem Pendentes</div>
             <div class="table-responsive">
-                <table class="table table-hover manage-u-table color-bordered-table muted-bordered-table">
+                <table class="table table-hover manage-u-table color-bordered-table primary-bordered-table">
                     <thead>
                         <tr>
                             <th width="70" class="text-center">#</th>

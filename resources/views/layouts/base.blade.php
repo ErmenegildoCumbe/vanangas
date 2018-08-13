@@ -211,15 +211,15 @@
                     </li>
                     <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Passagens<span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li> <a href="javascript:void(0)"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Requisitar Passagem</span></a> </li>
-                            <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Requisiçoes</span></a> </li>
-                            <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Requisiçoes Confirmadas</span></a> </li>
-                            <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Requisiçoes Canceladas</span></a> </li>
+                            <li> <a href="{{ route('pedidoPassagem.create') }}"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Requisitar Passagem</span></a> </li>
+                            <li> <a href="{{ route('pedidospassagem') }}"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Requisiçoes</span></a> </li>
+                            <li> <a href="{{ route('pedidospassagemconfirmados') }}"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Requisiçoes Confirmadas</span></a> </li>
+                            <li> <a href="{{ route('pedidospassagemCancelados') }}"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Requisiçoes Canceladas</span></a> </li>
                             <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="&#xe008;" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu"> Minhas Passagens </span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
-                                    <li> <a href="javascript:void(0)"><i class=" fa-fw">T</i><span class="hide-menu">Pendentes</span></a> </li>
-                                    <li> <a href="javascript:void(0)"><i class=" fa-fw">M</i><span class="hide-menu">Confirmadas</span></a> </li>
-                                    <li> <a href="javascript:void(0)"><i class=" fa-fw">R</i><span class="hide-menu">Canceladas</span></a> </li>
+                                    <li> <a href="{{ route('meuspendentes') }}"><i class=" fa-fw">T</i><span class="hide-menu">Pendentes</span></a> </li>
+                                    <li> <a href="{{ route('meusconfirmados') }}"><i class=" fa-fw">M</i><span class="hide-menu">Confirmadas</span></a> </li>
+                                    <li> <a href="{{ route('meuscancelados') }}"><i class=" fa-fw">R</i><span class="hide-menu">Canceladas</span></a> </li>
                                    
                                 </ul>
                             </li>
@@ -227,10 +227,10 @@
                     </li>
                     <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Utilizadores<span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li> <a href="javascript:void(0)"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Criar Novo</span></a> </li>
-                            <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Lista de Operadores</span></a> </li>
-                            <li> <a href="javascript:void(0)"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Lista de Operadores Desactivados</span></a> </li>
-                            <li> <a href="javascript:void(0)"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Lista de Clientes</span></a> </li>
+                            <li> <a href="{{ route('userscreate') }}"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Criar Novo</span></a> </li>
+                            <li> <a href="{{ route('usersactivos') }}"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Lista de Operadores</span></a> </li>
+                            <li> <a href="{{ route('usersdesactivados') }}"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Lista de Operadores Desactivados</span></a> </li>
+                            <li> <a href="{{ route('usersclientes') }}"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Lista de Clientes</span></a> </li>
              
                         </ul>
                     </li>

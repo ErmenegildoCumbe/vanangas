@@ -30,7 +30,7 @@
         <div class="panel">
             <div class="panel-heading">Pedidos de Pacotes de Viagem Confirmados</div>
             <div class="table-responsive">
-                <table class="table table-hover manage-u-table">
+                <table class="table table-hover manage-u-table color-bordered-table success-bordered-table">
                     <thead>
                         <tr>
                             <th width="70" class="text-center">#</th>
@@ -53,8 +53,7 @@
                          
                             <td>
                                 <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-key"></i></button>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
+                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>                            
                                 
                             </td>
                         </tr>
@@ -69,8 +68,7 @@
                          
                             <td>
                                 <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-key"></i></button>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
+                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>                            
                                 
                             </td>
                         </tr>
@@ -85,8 +83,7 @@
                          
                             <td>
                                 <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-key"></i></button>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
+                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>                            
                                 
                             </td>
                         </tr>

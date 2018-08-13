@@ -17,9 +17,8 @@
             
             <ol class="breadcrumb">
                 <li><a href="#">Vanangas</a></li>
-                <li><a href="#">Pedidos de Pacote</a></li>
-                <li><a href="#">Meus Pedidos</a></li>
-                <li class="active">Cancelados</li>
+                <li><a href="#">Passagens</a></li>                
+                <li class="active">Canceladas</li>
             </ol>
         </div>
         <!-- /.breadcrumb -->

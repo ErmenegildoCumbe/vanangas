@@ -23,7 +23,7 @@ class PedidoPassagemController extends Controller
      */
     public function create()
     {
-         
+        return view('passagens.create');  
     }
 
     /**
@@ -56,7 +56,7 @@ class PedidoPassagemController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('passagens.edit');
     }
 
     /**

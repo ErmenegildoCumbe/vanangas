@@ -39,3 +39,41 @@ Route::get('pedidoPacote/cancelados', function () {
 })->name('pedidoscancelados'); 
 Route::resource('pacote', 'PacoteController');
 Route::resource('pedidoPacote', 'PedidoPacoteController');
+//rotas de passagens
+Route::resource('pedidoPassagem', 'PedidoPassagemController');
+
+Route::get('pedidoPassagem/requisicoes', function () {
+    return view('passagens.requisicoes');
+})->name('pedidospassagem'); 
+Route::get('pedidoPassagem/requisicoes/canceladas', function () {
+    return view('passagens.requisicoescanceladas');
+})->name('pedidospassagemCancelados'); 
+Route::get('pedidoPassagem/requisicoes/confirmadas', function () {
+    return view('passagens.requisicoesconfirmadas');
+})->name('pedidospassagemconfirmados'); 
+Route::get('pedidoPassagem/confirmados', function () {
+    return view('passagens.meuspedidos.confirmados');
+})->name('meusconfirmados');
+Route::get('pedidoPassagem/pendentes', function () {
+    return view('passagens.meuspedidos.pendentes');
+})->name('meuspendentes');
+Route::get('pedidoPassagem/cancelados', function () {
+    return view('passagens.meuspedidos.cancelados');
+})->name('meuscancelados'); 
+
+//rotas de users
+Route::get('utilizadores/create', function () {
+    return view('utilizadores.create');
+})->name('userscreate'); 
+
+Route::get('utilizadores/activos', function () {
+    return view('utilizadores.users');
+})->name('usersactivos'); 
+
+Route::get('utilizadores/desactivados', function () {
+    return view('utilizadores.disabled');
+})->name('usersdesactivados'); 
+
+Route::get('utilizadores/clientes', function () {
+    return view('utilizadores.clients');
+})->name('usersclientes'); 

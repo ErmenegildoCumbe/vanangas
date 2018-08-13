@@ -69,10 +69,13 @@
                                                                 <!--/span-->
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
-                                                                        <label class="control-label">Meio de Transporte</label>
-                                                                        
-                                                                            <input type="text" class="form-control" placeholder=""> <span class="help-block"> Pode indicar o meio de Transporte preferencial </span> 
-                                                                       
+                                                                            <label class="col-sm-12">Tipo de Passagem</label>
+                                                                            <div class="col-sm-12">
+                                                                                <select class="form-control">
+                                                                                    <option>So ida</option>
+                                                                                    <option>Ida e Volta</option>                                                                                    
+                                                                                </select>
+                                                                            </div>
                                                                     </div>
                                                                 </div>
                                                                 <!--/span-->
@@ -109,8 +112,9 @@
                                                                                     <label class="control-label">Duraçao do Pacote</label>
                                                                                     <p class="text-muted m-b-20"> Selecione o principio e o fim da Estadia no destino</p>
                                                                                     <div class="input-daterange input-group" id="date-range">
-                                                                                        <input type="text" class="form-control" name="start" /> <span class="input-group-addon bg-info b-0 text-white">Até</span>
-                                                                                        <input type="text" class="form-control" name="end" /> </div>
+                                                                                        <input type="text" class="form-control" name="start" />
+                                                                                        
+                                                                                    </div>
                                                                                 </div>
                                                                     </div>
                                                                     <div class="col-md-6">
@@ -145,17 +149,17 @@
                     </div>
                     <div id="viajantes" class="tab-pane">
                         <div class="row" style="margin: auto;">
-                            <h1 class="text-warning">Adicione os dados básicos do pacote primeiro</h1 class="text-warning">
+                            <h1 class="text-warning">Adicione os dados básicos do Pedido de Passagem Primeiro</h1 class="text-warning">
                         </div>
                     </div>
                     <div id="contacto" class="tab-pane">
                             <div class="row" style="margin: auto;">
-                                    <h1 class="text-warning">Adicione os dados básicos do pacote primeiro</h1 class="text-warning">
+                                    <h1 class="text-warning">Adicione os dados básicos do Pedido de Passagem Primeiro</h1 class="text-warning">
                             </div>
                     </div>
                     <div id="passagens" class="tab-pane">
                             <div class="row" style="margin: auto;">
-                                    <h1 class="text-warning">Adicione os dados básicos do pacote primeiro</h1 class="text-warning">
+                                    <h1 class="text-warning">Adicione os dados básicos do Pedido de Passagem Primeiro</h1 class="text-warning">
                             </div>
                     </div>
                 </div>
