@@ -77,3 +77,11 @@ Route::get('utilizadores/desactivados', function () {
 Route::get('utilizadores/clientes', function () {
     return view('utilizadores.clients');
 })->name('usersclientes'); 
+
+//  Demo rotas de atuth
+Route::get('register', function () {
+    return view('authentication.register');
+})->name('usersclientes'); 
+Route::get('login', function () {
+    return view('authentication.login');
+})->name('usersclientes'); 
