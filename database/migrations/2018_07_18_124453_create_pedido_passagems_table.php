@@ -20,15 +20,9 @@ class CreatePedidoPassagemsTable extends Migration
             $table->string('ponto_chegada');
             $table->dateTime('data_partida');
             $table->mediumText('descricao');
-            $table->integer('estado');
-            $table->integer('passagems_id')->unsigned()->nullable();
-            $table->foreign('passagems_id')->references('id')->on('passagems');
+            $table->integer('estado');           
             $table->integer('clientes_id')->unsigned();
             $table->foreign('clientes_id')->references('id')->on('clientes');
-            $table->integer('passageiros_id')->unsigned()->nullable();
-            $table->foreign('passageiros_id')->references('id')->on('passageiros');
-            $table->integer('contactos_id')->unsigned()->nullable();
-            $table->foreign('contactos_id')->references('id')->on('contactos');
             $table->timestamps();
         });
     }

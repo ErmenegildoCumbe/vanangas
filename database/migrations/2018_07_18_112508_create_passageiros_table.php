@@ -21,6 +21,8 @@ class CreatePassageirosTable extends Migration
             $table->date('data_nascimento')->nullable();
             $table->string('sexo');
             $table->integer('tipo');
+            $table->integer('passageiroable_id');
+            $table->string('passageiroable_type');
             $table->timestamps();
         });
     }

@@ -19,6 +19,8 @@ class CreatePassagemsTable extends Migration
             $table->dateTime('data_criaco');
             $table->string('descricao')->nullable();
             $table->integer('estado');
+            $table->integer('passagemable_id');
+            $table->string('passagemable_type');
             $table->integer('companhia_viagens_id')->unsigned()->nullable();
             $table->foreign('companhia_viagens_id')->references('id')->on('companhia_viagens');
             $table->integer('operadors_id')->unsigned();

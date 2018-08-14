@@ -23,15 +23,9 @@ class CreatePedidoPacotesTable extends Migration
             $table->dateTime('data_inicio');
             $table->dateTime('data_fim');
             $table->integer('estado');
-            $table->mediumText('detalhes');
-            $table->integer('passagems_id')->unsigned()->nullable();
-            $table->foreign('passagems_id')->references('id')->on('passagems');
+            $table->mediumText('detalhes');           
             $table->integer('clientes_id')->unsigned();
-            $table->foreign('clientes_id')->references('id')->on('clientes');
-            $table->integer('passageiros_id')->unsigned()->nullable();
-            $table->foreign('passageiros_id')->references('id')->on('passageiros');
-            $table->integer('contactos_id')->unsigned()->nullable();
-            $table->foreign('contactos_id')->references('id')->on('contactos');
+            $table->foreign('clientes_id')->references('id')->on('clientes');     
             $table->timestamps();
         });
     }
