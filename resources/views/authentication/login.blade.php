@@ -45,24 +45,34 @@
                 <div class="white-box">
                     <h3 class="box-title m-b-0">Entre no Sistema</h3>
                     <small>Introduza as suas credenciais no formulário abaixo</small>
-                  <form class="form-horizontal new-lg-form" id="loginform" action="">
-                    
+                  <form class="form-horizontal new-lg-form" id="loginform" action="{{ route('logar') }}">
+                    {{ csrf_field() }}
                     <div class="form-group  m-t-20">
                       <div class="col-xs-12">
                         <label>Email</label>
-                        <input class="form-control" type="text" required="" placeholder="Username">
+                        <input class="form-control" type="text" required="" name="email" value="{{ old('email') }}" placeholder="Username">
+                        @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                        @endif
                       </div>
                     </div>
                     <div class="form-group">
                       <div class="col-xs-12">
                         <label>Senha</label>
-                        <input class="form-control" type="password" required="" placeholder="Password">
+                        <input class="form-control" type="password" name="password" required="" placeholder="Password">
+                        @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                        @endif
                       </div>
                     </div>
                     <div class="form-group">
                       <div class="col-md-12">
                         <div class="checkbox checkbox-info pull-left p-t-0">
-                          <input id="checkbox-signup" type="checkbox">
+                          <input id="checkbox-signup" name="remember" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
                           <label for="checkbox-signup"> Lembrar-me </label>
                         </div>
                         <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> Esqueceu-se da Senha?</a> </div>
@@ -77,13 +87,14 @@
                         <div class="social"><a href="javascript:void(0)" class="btn  btn-facebook" data-toggle="tooltip"  title="Login with Facebook"> <i aria-hidden="true" class="fa fa-facebook"></i> </a> <a href="javascript:void(0)" class="btn btn-googleplus" data-toggle="tooltip"  title="Login with Google"> <i aria-hidden="true" class="fa fa-google-plus"></i> </a> </div>
                       </div>
                     </div>
-                    <div class="form-group m-b-0">
+                    <div class="form-group m-b-0 row">
                       <div class="col-sm-12 text-center">
-                        <p>Don't have an account? <a href="register.html" class="text-primary m-l-5"><b>Sign Up</b></a></p>
+                        <p>Nao tem conta? <a href="{{ route('criarconta')}}" class="text-primary m-l-5"><b>Criar Conta</b></a></p>
                       </div>
                     </div>
                   </form>
                   <form class="form-horizontal" id="recoverform" action="">
+                        {{ csrf_field() }}
                     <div class="form-group ">
                       <div class="col-xs-12">
                         <h3>Recuperar Senha</h3>

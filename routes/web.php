@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('/home', function () {
     return view('home');
-}); 
+})->middleware('auth'); 
 
 Route::get('/detalhes', function () {
     return view('pacotes.detalhes');
@@ -81,7 +81,15 @@ Route::get('utilizadores/clientes', function () {
 //  Demo rotas de atuth
 Route::get('register', function () {
     return view('authentication.register');
-})->name('usersclientes'); 
+})->name('criarconta'); 
 Route::get('login', function () {
     return view('authentication.login');
-})->name('usersclientes'); 
+})->name('login'); 
+
+Route::post('register', 'CustomAuthController@register')->name('register');
+Route::get('/logar', 'CustomAuthController@login')->name('logar');
+Route::post('logout', 'CustomAuthController@logout')->name('logout');
+
+//Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
