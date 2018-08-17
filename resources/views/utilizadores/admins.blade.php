@@ -9,7 +9,7 @@
  <div class="row bg-title">
         <!-- .page title -->
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">Gestao de Operadores</h4> </div>
+            <h4 class="page-title">Gestao de Administradores</h4> </div>
         <!-- /.page title -->
         <!-- .breadcrumb -->
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> 
@@ -18,7 +18,7 @@
             <ol class="breadcrumb">
                 <li><a href="#">Vanangas</a></li>
                 <li><a href="#">Utilizadores</a></li>                
-                <li class="active">Operadores</li>
+                <li class="active">Administradores</li>
             </ol>
         </div>
         <!-- /.breadcrumb -->
@@ -26,7 +26,7 @@
     {{-- conteudo --}}
     <div class="row" style="margin: auto;">
         <button type="button" class="btn btn-primary" data-toggle="modal" 
-            data-target="#addpassenger" data-whatever="@mdo">Adicionar Operador
+            data-target="#addpassenger" data-whatever="@mdo">Adicionar Administrador
         </button>
         <div class="modal fade bs-example-modal-lg" id="addpassenger" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
                 <div class="modal-dialog modal-lg" role="document">
@@ -103,8 +103,7 @@
                                             <div class="col-md-6 ">
                                                 <div class="form-group">
                                                     <label>Tipo de Usuário</label>
-                                                    <select name="tipo" class="form-control">                                                                                           
-                                                        <option value="2">Operador</option>
+                                                    <select name="tipo" class="form-control">                                     
                                                         <option value="1">Administrador</option>                                                                                                                                                   
                                                     </select>
                                                 </div>
@@ -128,7 +127,7 @@
 <div class="row">
         <div class="col-md-12">
             <div class="panel">
-                <div class="panel-heading">Operadores Registados</div>
+                <div class="panel-heading">Administradores Registados</div>
                 <div class="table-responsive">
                     <table class="table table-hover manage-u-table">
                         <thead>
@@ -143,17 +142,17 @@
                         </thead>
                         <tbody>
                             <?php  $i=0; ?>
-                            @foreach ($operadores as $operador)
+                            @foreach ($administradores as $administrador)
                                 
                                 <tr>
                                     <td class="text-center"><?php echo ++$i; ?></td>
-                                    <td>{{$operador->user->nome }} {{ $operador->user->apelido  }}
+                                    <td>{{$administrador->user->nome }} {{ $administrador->user->apelido  }}
                                         {{--  <br/><span class="text-muted">Texas, Unitedd states</span></td>  --}}
-                                    <td>{{$operador->user->email}}</td>
-                                    <td>{{$operador->user->telefone}}
+                                    <td>{{$administrador->user->email}}</td>
+                                    <td>{{$administrador->user->telefone}}
                                         {{--  <br/><span class="text-muted">999 - 444 - 555</span></td>  --}}
                                     <td>
-                                            <?php if ($operador->estado == 1) { ?>
+                                            <?php if ($administrador->estado == 1) { ?>
                                                 <span class="btn-info btn-small">Activo</span>
                                             <?php } 
                                             else{?>
@@ -162,11 +161,11 @@
                                     </td>
                                 
                                     <td> 
-                                        <?php if($operador->estado == 1){?>                                                           
-                                        <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-lock" onclick="desactivar({{ $operador->id }})"></i></button>
+                                        <?php if($administrador->estado == 1){?>                                                           
+                                        <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-lock" onclick="desactivar({{ $administrador->id }})"></i></button>
                                         <?php } 
                                             else{?>
-                                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-unlock" onclick="desactivar({{ $operador->id }})"></i></button>
+                                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-unlock" onclick="desactivar({{ $administrador->id }})"></i></button>
                                             <?php } ?>
                                         <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>                                        
                                         <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-20"><i class="ti-eye"></i></button>
@@ -210,7 +209,7 @@
                 $.ajax({
                     dataType: 'json',
                     method: 'get',                
-                    url: "operadores/editstate/"+id,
+                    url: "administradores/editstate/"+id,
                     data: id,
                     //async: false,
                     //dataType: 'json',

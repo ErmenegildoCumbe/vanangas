@@ -62,6 +62,12 @@ Route::get('pedidoPassagem/cancelados', function () {
 })->name('meuscancelados'); 
 
 //rotas de users
+Route::resource('operadores', 'OperadorsController');
+Route::post('operadores/add', 'OperadorsController@storeajax')->name('addopera');
+Route::get('operadores/editstate/{id}', 'OperadorsController@editstatus')->name('updatestate');
+Route::resource('administradores', 'AdministradorController');
+Route::get('administradores/editstate/{id}', 'AdministradorController@editstatus')->name('updatestateadmin');
+Route::resource('clientes', 'ClienteController');
 Route::get('utilizadores/create', function () {
     return view('utilizadores.create');
 })->name('userscreate'); 

@@ -241,9 +241,9 @@
                     <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Utilizadores<span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
                             <li> <a href="{{ route('userscreate') }}"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Criar Novo</span></a> </li>
-                            <li> <a href="{{ route('usersactivos') }}"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Lista de Operadores</span></a> </li>
-                            <li> <a href="{{ route('usersdesactivados') }}"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Lista de Operadores Desactivados</span></a> </li>
-                            <li> <a href="{{ route('usersclientes') }}"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Lista de Clientes</span></a> </li>
+                            <li> <a href="{{ route('operadores.index') }}"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Lista de Operadores</span></a> </li>
+                            <li> <a href="{{ route('administradores.index') }}"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Lista de Administradores</span></a> </li>
+                            <li> <a href="{{ route('clientes.index') }}"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Lista de Clientes</span></a> </li>
              
                         </ul>
                     </li>

@@ -9,7 +9,7 @@
 <div class="row bg-title">
         <!-- .page title -->
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">Início</h4> </div>
+            <h4 class="page-title">Utilizadores</h4> </div>
         <!-- /.page title -->
         <!-- .breadcrumb -->
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> 
@@ -17,7 +17,7 @@
             
             <ol class="breadcrumb">
                 <li><a href="#">Vanangas</a></li>
-                <li><a href="#">Pacotes</a></li>                
+                <li><a href="#">Utilizadores</a></li>                
                 <li class="active">Criar Novo</li>
             </ol>
         </div>
@@ -28,55 +28,84 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-info">
-            <div class="panel-heading"> Preencha os Dados do Pacote</div>
+            <div class="panel-heading"> Preencha os Dados do Usuário</div>
             <div class="panel-wrapper collapse in" aria-expanded="true">
                 <div class="panel-body">
-                    <form action="#" class="form-material">
+                    <form action="{{ route('operadores.store') }}" method="POST" class="form-material">
                             {{ csrf_field() }}
                         <div class="form-body">
-                            <h3 class="box-title">Informaçao do Pacote</h3>
+                            <h3 class="box-title">Dados da conta</h3>
                             <hr>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">Designaçao</label>
-                                        <input type="text" id="firstName" class="form-control" placeholder="introduza a o nome do Pacote"> 
+                                        <label class="control-label">Email</label>
+                                        <input type="email" id="email" name="email" class="form-control" value="{{ old('email') }}" placeholder="introduza a o nome do Pacote"> 
+                                        @if ($errors->has('email'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <!--/span-->
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">Descriçao</label>
-                                        <textarea class="form-control" rows="5"></textarea>
+                                        <label class="control-label">Senha</label>
+                                        <input type="text" id="password" name="password" class="form-control" placeholder="introduza a senha"> 
                                     </div>
                                 </div>
                                 <!--/span-->
-                            </div>
-                            <!--/row-->
-                            <div class="row">
-                                <div class="col-md-6">
-                                        <div class="example">
-                                                <label class="control-label">Duraçao do Pacote</label>
-                                                <p class="text-muted m-b-20"> Selecione o principio e o fim da disponibilidade do Pacote</p>
-                                                <div class="input-daterange input-group" id="date-range">
-                                                    <input type="text" class="form-control" name="start" /> <span class="input-group-addon bg-info b-0 text-white">Até</span>
-                                                    <input type="text" class="form-control" name="end" /> </div>
-                                            </div>
-                                </div>
-                                <!--/span-->
-                                
                             </div>
                             <!--/row-->
 
-                            <h3 class="box-title m-t-40">Endereço</h3>
+                            <h3 class="box-title m-t-40">Dados Pessoais</h3>
                             <hr>
                             <div class="row">
-                                <div class="col-md-12 ">
+                                <div class="col-md-6 ">
                                     <div class="form-group">
-                                        <label>Local</label>
-                                        <input type="text" class="form-control"><span class="help-block"> Introduza o nome do país, cidade ou província </span> 
+                                        <label>Nome</label>
+                                        <input type="text" name="nome" class="form-control" value="{{ old('nome') }}"><span class="help-block"> Introduza o nome aqui! </span> 
+                                        @if ($errors->has('nome'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('nome') }}</strong>
+                                        </span>
+                                        @endif
                                     </div>
                                 </div>
+                                <div class="col-md-6 ">
+                                        <div class="form-group">
+                                            <label>Apelido</label>
+                                            <input type="text" name="apelido" class="form-control value="{{ old('apelido') }}"">
+                                            @if ($errors->has('apelido'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('apelido') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                            </div>                            
+                            <div class="row">
+                                    <div class="col-md-6 ">
+                                        <div class="form-group">
+                                            <label>Telefone</label>
+                                            <input type="text" name="telefone" class="form-control" value="{{ old('telefone') }}">
+                                            @if ($errors->has('telefone'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('telefone') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                            <div class="form-group">
+                                                <label>Tipo de Usuário</label>
+                                                <select name="tipo" class="form-control">                                                                                           
+                                                        <option value="2">Operador</option>
+                                                        <option value="1">Administrador</option>                                                                                                                                                   
+                                                </select>
+                                            </div>
+                                    </div>
                             </div>
                             
                          
