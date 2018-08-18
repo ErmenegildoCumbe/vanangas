@@ -17,14 +17,8 @@ Route::get('/', function () {
 
 Route::get('/home', function () {
     return view('home');
-})->middleware('auth'); 
+})->middleware('auth');
 
-Route::get('/detalhes', function () {
-    return view('pacotes.detalhes');
-});
-Route::get('pacote/editimage', function () {
-    return view('pacotes.editimages');
-});
 Route::get('pacote/requisitar', function () {
     return view('pacotes.requisitar');
 });
@@ -37,8 +31,12 @@ Route::get('pedidoPacote/confirmados', function () {
 Route::get('pedidoPacote/cancelados', function () {
     return view('pedidospacote.meuspedidos.cancelados');
 })->name('pedidoscancelados'); 
+//Rotas pacote de viagem
 Route::resource('pacote', 'PacoteController');
+Route::get('pacote/{id}/editimage', 'PacoteController@showaddimages')->name('pacoteimages');
+Route::post('pacote/addimages', 'PacoteController@addimages')->name('addimage');
 Route::resource('pedidoPacote', 'PedidoPacoteController');
+Route::get('vie/{id}', 'PacoteController@vie');
 //rotas de passagens
 Route::resource('pedidoPassagem', 'PedidoPassagemController');
 

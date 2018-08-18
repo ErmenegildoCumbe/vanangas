@@ -17,9 +17,11 @@ class CreatePacoteViagemsTable extends Migration
             $table->increments('id');
             $table->string('designacao');
             $table->mediumText('descricao');
-            $table->dateTime('data_inicio');
-            $table->dateTime('data_fim');
+            $table->date('data_inicio');
+            $table->date('data_fim');
             $table->integer('estado');
+            $table->string('local');
+            $table->string('imagem_principal')->nullable();
             $table->integer('operadors_id')->unsigned();
             $table->foreign('operadors_id')->references('id')->on('operadors');
             $table->timestamps();

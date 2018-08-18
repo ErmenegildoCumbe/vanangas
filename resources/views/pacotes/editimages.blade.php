@@ -11,7 +11,7 @@
     <div class="row bg-title">
         <!-- .page title -->
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">Início</h4> </div>
+            <h4 class="page-title">{{ $pacote->designacao }}</h4> </div>
         <!-- /.page title -->
         <!-- .breadcrumb -->
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> 
@@ -34,13 +34,17 @@
                    
                     <div id="gallery-content">
                         <div id="gallery-content-center">
-                            <a href="{{ asset('images/template/heading-bg/slide3.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ asset('images/template/heading-bg/slide3.jpg') }}" alt="gallery" class="all studio" /> </a>
-                            <a href="{{ asset('images/template/heading-bg/slide4.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ asset('images/template/heading-bg/slide4.jpg') }}" class="all landscape" alt="gallery" /> </a>
+                            @foreach ($fotos as $foto)
+                                <a href="{{ asset($foto->designacao) }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ asset($foto->designacao) }}" alt="gallery" class="all studio" /> </a>
+                            @endforeach
+                           
+
+                            {{--  <a href="{{ asset('images/template/heading-bg/slide4.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ asset('images/template/heading-bg/slide4.jpg') }}" class="all landscape" alt="gallery" /> </a>
                             <a href="{{ asset('images/template/heading-bg/slide6.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ asset('images/template/heading-bg/slide6.jpg') }}" class="all studio" alt="gallery" /> </a>
                             <a href="{{ asset('images/template/heading-bg/slide1.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ asset('images/template/heading-bg/slide1.jpg') }}" class="all studio" alt="gallery" /> </a>
                             <a href="{{ asset('images/template/heading-bg/slide3.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ asset('images/template/heading-bg/slide3.jpg') }}" class="all landscape" alt="gallery" /></a>
                             <a href="{{ asset('images/template/heading-bg/slide3.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ asset('images/template/heading-bg/slide3.jpg') }}" class="all studio" alt="gallery" /> </a>
-                           
+                             --}}
                                 
                         </div>
                     </div>
@@ -54,27 +58,37 @@
                 <div class="white-box">
                     <h3 class="box-title m-b-0">Adicione novas imagens </h3>
                     <p class="text-muted m-b-30 text-info"> So Pode selecionar uma imagem por caixa de cada vez</p>
-                    <form action="#" class="form-material">
+                    <form action="{{ route('addimage') }}" id="formimages" class="form-material" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
-                      
+                            <input type="hidden" id="pacotecod" name="pacotecod" value="{{ $pacote->id }}">
                         <div class="row">
                                 <div class="col-sm-6 ol-md-6 col-xs-12">
                                     <div class="white-box">
                                         <h3 class="box-title">Selecione Uma Imagem</h3>
                                         
-                                        <input type="file" id="input-file-max-fs" class="dropify" data-max-file-size="2M" /> 
+                                        <input type="file" id="input-file-max-fs" name="img1" class="dropify" data-max-file-size="2M" />
+                                        @if ($errors->has('img1'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('img1') }}</strong>
+                                            </span>
+                                        @endif 
                                     </div>
                                 </div>
                                 <div class="col-sm-6 ol-md-6 col-xs-12">
                                     <div class="white-box">
                                         <h3 class="box-title">Selecione Uma Imagem</h3>
                                         
-                                        <input type="file" id="input-file-events" class="dropify" data-max-file-size="2M" /> </div>
+                                        <input type="file" id="input-file-max-fs" name="img2" class="dropify" data-max-file-size="2M" /> </div>
+                                        @if ($errors->has('img2'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('img2') }}</strong>
+                                            </span>
+                                        @endif 
                                 </div>
                             </div>
                         <div class="form-actions">
                                 <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Gravar</button>
-                                <button type="button" class="btn btn-default">Cancel</button>
+                                {{--  <button type="button" class="btn btn-default">Cancel</button>  --}}
                             </div>
                     </form>
                 </div>
@@ -166,6 +180,26 @@
                         }
                     })
                 });
+                </script>
+                <script>
+                        function addimages(){
+                            var dadospedido = $('#formimages').serialize();                
+                            $.ajax({
+                            dataType: 'json',
+                            method: 'post',                
+                            url: "{{ route('addopera') }}",
+                            data: dadospedido,
+                            //async: false,
+                            //dataType: 'json',
+                            success: function (respos) {                                 
+                                var cod = respos;
+                                window.location.reload(true);                   
+                            },
+                            error: function (err) {                  
+                                console.log(err);                    
+                            }
+                        });
+                        }
                 </script>
         <script src="{{  asset('bower_components/styleswitcher/jQuery.style.switcher.js') }}"></script>
 @endsection

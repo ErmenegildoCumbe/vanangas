@@ -76,7 +76,7 @@
                                 <div class="col-md-6 ">
                                         <div class="form-group">
                                             <label>Apelido</label>
-                                            <input type="text" name="apelido" class="form-control value="{{ old('apelido') }}"">
+                                            <input type="text" name="apelido" class="form-control" value="{{ old('apelido') }}">
                                             @if ($errors->has('apelido'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('apelido') }}</strong>

@@ -58,7 +58,7 @@ class OperadorsController extends Controller
         if($request->tipo == 2){
             $operador->estado = 1;
             $administrador = Administrador::where('users_id', Auth::id())->get();
-            $operador->administradors_id =$administrador[0]->id;;
+            $operador->administradors_id =$administrador[0]->id;
             $operador->users_id = $user->id;
             $operador->save();
             $userpermission->permission_id = 2;

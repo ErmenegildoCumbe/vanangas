@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class PacoteViagem extends Model
 {
     protected $fillable = [
-        'designacao', 'descricao', 'data_inicio', 'data_fim', 'estado', 'operadors_id',
+        'designacao', 'descricao', 'data_inicio', 'data_fim', 'estado', 'local', 'imagem_principal','operadors_id',
     ];
     //Relations
     public function fotos()
