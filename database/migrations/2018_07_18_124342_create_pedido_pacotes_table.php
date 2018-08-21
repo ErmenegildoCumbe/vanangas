@@ -23,7 +23,9 @@ class CreatePedidoPacotesTable extends Migration
             $table->dateTime('data_inicio');
             $table->dateTime('data_fim');
             $table->integer('estado');
-            $table->mediumText('detalhes');           
+            $table->mediumText('detalhes');
+            $table->integer('pacote_id')->unsigned()->nullable();
+            $table->foreign('pacote_id')->references('id')->on('pacote_viagems');            
             $table->integer('clientes_id')->unsigned();
             $table->foreign('clientes_id')->references('id')->on('clientes');     
             $table->timestamps();

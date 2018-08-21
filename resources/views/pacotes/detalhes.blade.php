@@ -5,14 +5,15 @@
     <link href="{{ asset('bower_components/sidebar-nav/dist/sidebar-nav.min.css') }}" rel="stylesheet">
     <link href="{{ asset('bower_components/gallery/css/animated-masonry-gallery.css') }}" rel="stylesheet">
     <link href="{{ asset('bower_components/fancybox/ekko-lightbox.min.css') }}" rel="stylesheet">
-@endsection
+    <link href="{{ asset('bower_components/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+    @endsection
 @section('content')
 
 {{-- cabecalho da pagina --}}
 <div class="row bg-title">
         <!-- .page title -->
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">Início</h4> </div>
+            <h4 class="page-title">{{ $pacote->designacao }}</h4> </div>
         <!-- /.page title -->
         <!-- .breadcrumb -->
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> 
@@ -50,22 +51,23 @@
             <div class="tab-content">
                 <div id="home3" class="tab-pane active">
                     <div class="col-md-6">
-                        <h3>Nome Pacote</h3>
-                        <h4>Provincia</h4>
+                        <h3>{{ $pacote->designacao }}</h3>
+                        <h4>Local</h4>
                         <small class="text-success">  <i class="material-icons">
                                 location_on
-                                </i> Exemplo de provincia Provincia
+                                </i> {{ $pacote->local }}
                             </small>
-                            <small class="text-muted db"> <b>Data:</b> 2018-07-20</small>
-                            <small class="text-muted db"><b>Validade:</b> 2018-10-20</small>
+                            <small class="text-muted db"> <b>Data:</b> {{ $pacote->data_inicio }} </small>
+                            <small class="text-muted db"><b>Validade:</b> {{ $pacote->data_fim }} </small>
                             <div class="center" style="">
-                                    <a class="btn btn-rounded btn-info btn-block p-10">Requisitar Pacote</a>
+                                    <a class="btn btn-rounded btn-info btn-block p-10" data-toggle="modal" 
+                                    data-target="#requestpackage" data-whatever="@mdo">Requisitar Pacote</a>
                             </div>
                     </div>
                     <div class="col-md-5 pull-right">
-                            <h3>Descriçao Pacote</h3>
-                        <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a.</p>
-                        <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                            <h3>Descriçao do Pacote</h3>
+                        <p>{{ $pacote->descricao }}</p>
+                        {{--  <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>  --}}
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -140,13 +142,9 @@
                
                 <div id="gallery-content">
                     <div id="gallery-content-center">
-                        <a href="{{ asset('images/template/heading-bg/slide3.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ asset('images/template/heading-bg/slide3.jpg') }}" alt="gallery" class="all studio" /> </a>
-                        <a href="{{ asset('images/template/heading-bg/slide4.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ asset('images/template/heading-bg/slide4.jpg') }}" class="all landscape" alt="gallery" /> </a>
-                        <a href="{{ asset('images/template/heading-bg/slide6.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ asset('images/template/heading-bg/slide6.jpg') }}" class="all studio" alt="gallery" /> </a>
-                        <a href="{{ asset('images/template/heading-bg/slide1.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ asset('images/template/heading-bg/slide1.jpg') }}" class="all studio" alt="gallery" /> </a>
-                        <a href="{{ asset('images/template/heading-bg/slide3.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ asset('images/template/heading-bg/slide3.jpg') }}" class="all landscape" alt="gallery" /></a>
-                        <a href="{{ asset('images/template/heading-bg/slide3.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ asset('images/template/heading-bg/slide3.jpg') }}" class="all studio" alt="gallery" /> </a>
-                       
+                        @foreach ($fotos as $foto)
+                            <a href="{{ asset($foto->designacao) }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ asset($foto->designacao) }}" alt="gallery" class="all studio" /> </a>
+                        @endforeach
                             
                     </div>
                 </div>
@@ -155,13 +153,153 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade bs-example-modal-lg" id="requestpackage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel1">Inserçao de Operador</h4> 
+                </div>
+                <div class="modal-body col-md-offset-1 col-sm-offset-1">
+                        <form action="{{ route('addPedidoViaPacote', ['id'=>$pacote->id]) }}" class="form-material form-horizontal" id="formrequestpedido" method="POST">
+                                {{ csrf_field() }}
+                            <div class="form-body">
+                                <h3 class="box-title">Informaçao sobre os pontos</h3>
+                                <hr class="m-t-0 m-b-40">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Numero de Viajantes</label>
+                                            
+                                                <input type="text" class="form-control" name="nrviajantes" value="{{ old('nrviajantes') }}"> <span class="help-block">Informe o Numero de viajantes no campo acima </span> 
+                                                @if ($errors->has('nrviajantes'))
+                                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('nrviajantes') }}</strong>
+                                                    </span>
+                                                @endif    
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Meio de Transporte</label>
+                                            
+                                                <input type="text" class="form-control" name="meiotransport" value="{{ old('meiotransport') }}"> <span class="help-block"> Pode indicar o meio de Transporte preferencial </span> 
+                                                @if ($errors->has('meiotransport'))
+                                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('meiotransport') }}</strong>
+                                                    </span>
+                                                 @endif 
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+                                <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Ponto de Partida</label>
+                                               
+                                                    <input type="text" class="form-control" name="pontopartida" value="{{ old('pontopartida') }}"> <span class="help-block">Informe o ponto de partida </span> 
+                                                    @if ($errors->has('pontopartida'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('pontopartida') }}</strong>
+                                                        </span>
+                                                    @endif 
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Destino</label>
+                                               
+                                                    <input type="text" class="form-control" value="{{ $pacote->local }}"> 
+                                               
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                </div>
+                    
+                                <!--/row-->
+                                
+                                <h3 class="box-title">Detalhes</h3>
+                                <hr class="m-t-0 m-b-40">
+                                <div class="row">
+                                        <div class="col-md-6">
+                                                <div class="example">
+                                                        <label class="control-label">Duraçao do Pacote</label>
+                                                        <p class="text-muted m-b-20"> Selecione o principio e o fim da Estadia no destino</p>
+                                                        <div class="input-daterange input-group" id="date-range">
+                                                            <input type="text" class="form-control" name="start" value="{{ old('start') }}" /> <span class="input-group-addon bg-info b-0 text-white">Até</span>
+                                                            <input type="text" class="form-control" name="end" value="{{ old('end') }}" /> </div>
+                                                            @if ($errors->has('end'))
+                                                                <span class="help-block">
+                                                                    <strong>{{ $errors->first('end') }}</strong>
+                                                                </span>
+                                                            @endif 
+                                                    </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Descriçao</label>
+                                                    <textarea class="form-control" name="descricao" rows="5"  value="{{ old('descricao') }}"></textarea>
+                                                    @if ($errors->has('descricao'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('descricao') }}</strong>
+                                                        </span>
+                                                    @endif 
+                                                </div>
+                                        </div>
+                                            <!--/span-->
+
+                                </div>
+                                
+                                <!--/row-->
+                            </div>
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-offset-10 col-md-9">
+                                                <button type="submit" class="btn btn-primary">Enviar</button>
+                                                {{--  <button type="button" class="btn btn-default">Cancel</button>  --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6"> </div>
+                                </div>
+                            </div>
+                        </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    {{--  <button type="submit" class="btn btn-primary" >Enviar</button>  --}}
+                </div>
+            </div>
+        </div>
+</div>
 @endsection
 
 @section('scripts')
     <script src="{{  asset('bower_components/gallery/js/animated-masonry-gallery.js') }}"></script>
     <script src="{{  asset('bower_components/gallery/js/jquery.isotope.min.js') }}"></script>
     <script src="{{  asset('bower_components/fancybox/ekko-lightbox.min.js') }}"></script>
+    <script src="{{  asset('bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
     <script type="text/javascript">
+         // Date Picker
+         jQuery('.mydatepicker, #datepicker').datepicker();
+         jQuery('#datepicker-autoclose').datepicker({
+             autoclose: true,
+             todayHighlight: true
+         });
+         jQuery('#date-range').datepicker({
+             toggleActive: true
+         });
+         jQuery('#datepicker-inline').datepicker({
+             todayHighlight: true
+         });
+         
         $(document).ready(function($) {
             // delegate calls to data-toggle="lightbox"
             $(document).delegate('*[data-toggle="lightbox"]:not([data-gallery="navigateTo"])', 'click', function(event) {

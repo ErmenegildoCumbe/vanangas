@@ -35,8 +35,9 @@ Route::get('pedidoPacote/cancelados', function () {
 Route::resource('pacote', 'PacoteController');
 Route::get('pacote/{id}/editimage', 'PacoteController@showaddimages')->name('pacoteimages');
 Route::post('pacote/addimages', 'PacoteController@addimages')->name('addimage');
+//pedido pacote de viagem
 Route::resource('pedidoPacote', 'PedidoPacoteController');
-Route::get('vie/{id}', 'PacoteController@vie');
+Route::post('pedidoPacote/{id}', 'PedidoPacoteController@viaPacote')->name('addPedidoViaPacote');
 //rotas de passagens
 Route::resource('pedidoPassagem', 'PedidoPassagemController');
 

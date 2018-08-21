@@ -62,8 +62,9 @@ class PacoteController extends Controller
      */
     public function show($id)
     {
-       
-        return view('pacotes.detalhes');
+        $fotos = PacoteViagem::findOrFail($id)->fotos;
+        $pacote = PacoteViagem::findOrFail($id);
+        return view('pacotes.detalhes', compact('fotos','pacote'));
     }
 
     /**
@@ -138,11 +139,8 @@ class PacoteController extends Controller
     }
     public function showaddimages($id){
         $fotos = PacoteViagem::findOrFail($id)->fotos;
-        $pacote = PacoteViagem::find($id);
+        $pacote = PacoteViagem::findOrFail($id);
         return view('pacotes.editimages', compact('fotos','pacote'));
     }
-    public function vie($id){
-        $foto = FotoPacote::find($id);
-     return   $url = Storage::url($foto->designacao);
-    }
+
 }

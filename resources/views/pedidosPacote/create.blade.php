@@ -62,8 +62,12 @@
                                                                     <div class="form-group">
                                                                         <label class="control-label">Numero de Viajantes</label>
                                                                         
-                                                                            <input type="text" class="form-control" placeholder=""> <span class="help-block">Informe o Numero de viajantes no campo acima </span> 
-                                                                       
+                                                                            <input type="text" class="form-control" name="nrviajantes" placeholder=""> <span class="help-block">Informe o Numero de viajantes no campo acima </span> 
+                                                                            @if ($errors->has('nrviajantes'))
+                                                                            <span class="help-block">
+                                                                                <strong>{{ $errors->first('nrviajantes') }}</strong>
+                                                                            </span>
+                                                                            @endif
                                                                     </div>
                                                                 </div>
                                                                 <!--/span-->
@@ -71,8 +75,12 @@
                                                                     <div class="form-group">
                                                                         <label class="control-label">Meio de Transporte</label>
                                                                         
-                                                                            <input type="text" class="form-control" placeholder=""> <span class="help-block"> Pode indicar o meio de Transporte preferencial </span> 
-                                                                       
+                                                                            <input type="text" class="form-control" name="transporte" placeholder=""> <span class="help-block"> Pode indicar o meio de Transporte preferencial </span> 
+                                                                            @if ($errors->has('transporte'))
+                                                                            <span class="help-block">
+                                                                                <strong>{{ $errors->first('transporte') }}</strong>
+                                                                            </span>
+                                                                            @endif
                                                                     </div>
                                                                 </div>
                                                                 <!--/span-->
@@ -83,8 +91,12 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label">Ponto de Partida</label>
                                                                            
-                                                                                <input type="text" class="form-control" placeholder=""> <span class="help-block">Informe o ponto de partida </span> 
-                                                                            
+                                                                                <input type="text" class="form-control" name="partida" placeholder=""> <span class="help-block">Informe o ponto de partida </span> 
+                                                                                @if ($errors->has('partida'))
+                                                                                <span class="help-block">
+                                                                                    <strong>{{ $errors->first('partida') }}</strong>
+                                                                                </span>
+                                                                                @endif
                                                                         </div>
                                                                     </div>
                                                                     <!--/span-->
@@ -92,8 +104,12 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label">Destino</label>
                                                                            
-                                                                                <input type="text" class="form-control" placeholder=""> <span class="help-block"> Informe o ponto de partida </span> 
-                                                                           
+                                                                                <input type="text" class="form-control" name="destino" placeholder=""> <span class="help-block"> Informe o ponto de partida </span> 
+                                                                                @if ($errors->has('destino'))
+                                                                                    <span class="help-block">
+                                                                                        <strong>{{ $errors->first('destino') }}</strong>
+                                                                                    </span>
+                                                                                @endif
                                                                         </div>
                                                                     </div>
                                                                     <!--/span-->
@@ -116,7 +132,12 @@
                                                                     <div class="col-md-6">
                                                                             <div class="form-group">
                                                                                 <label class="control-label">Descriçao</label>
-                                                                                <textarea class="form-control" rows="5"></textarea>
+                                                                                <textarea class="form-control" rows="5" name="descricao"></textarea>
+                                                                                @if ($errors->has('descricao'))
+                                                                                    <span class="help-block">
+                                                                                        <strong>{{ $errors->first('descricao') }}</strong>
+                                                                                    </span>
+                                                                                @endif
                                                                             </div>
                                                                     </div>
                                                                         <!--/span-->

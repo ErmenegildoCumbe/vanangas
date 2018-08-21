@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\PacoteViagem;
+use App\PedidoPacote;
+use App\User;
+use Auth;
 class PedidoPacoteController extends Controller
 {
     /**
@@ -34,7 +37,23 @@ class PedidoPacoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validation($request);
+        $pacote = PacoteViagem::findOrFail($id);
+        $pedido = new PedidoPacote;
+
+        $pedido->nr_viajantes = $request->nrviajantes;
+        $pedido->ponto_partida = $request->pontopartida;
+        $pedido->ponto_chegada = $pacote->local;
+        $pedido->meio_transporte = $request->meiotransport;
+        $pedido->data_inicio = date_create($request->start);
+        $pedido->data_fim = date_create($request->end);
+        $pedido->detalhes = $request->descricao;
+        $pedido->estado = 1;
+        $pedido->pacote_id = $pacote->id;
+        $cliente = User::find(Auth::id())->cliente;
+        $pedido->clientes_id = $cliente->id;
+        $pedido->save();
+        return redirect('pacote');
     }
 
     /**
@@ -80,5 +99,40 @@ class PedidoPacoteController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function viaPacote(Request $request, $id){
+        $this->validate($request, [
+            'nrviajantes' => 'required|numeric|max:99',
+            'meiotransport' => 'nullable|alpha_num|max:55',
+            'pontopartida' => 'required|alpha_num|max:55',
+            'start' => 'required|date',
+            'end' => 'required|date',
+            'descricao' => 'nullable|string',
+           ]);
+           $pacote = PacoteViagem::findOrFail($id);
+           $pedido = new PedidoPacote;
+
+           $pedido->nr_viajantes = $request->nrviajantes;
+           $pedido->ponto_partida = $request->pontopartida;
+           $pedido->ponto_chegada = $pacote->local;
+           $pedido->meio_transporte = $request->meiotransport;
+           $pedido->data_inicio = date_create($request->start);
+           $pedido->data_fim = date_create($request->end);
+           $pedido->detalhes = $request->descricao;
+           $pedido->estado = 1;
+           $pedido->pacote_id = $pacote->id;
+           $cliente = User::find(Auth::id())->cliente;
+           $pedido->clientes_id = $cliente->id;
+           $pedido->save();
+           return redirect('pacote');
+    }
+    protected function validation($request){
+        return $this->validate($request, [
+         'designacao' => 'required|string|max:55',
+         'descricao' => 'required|string|max:255',
+         'start' =>'required|date',
+         'end' =>'required|date',
+         'local' =>'required|string|max:115',         
+        ]);
     }
 }

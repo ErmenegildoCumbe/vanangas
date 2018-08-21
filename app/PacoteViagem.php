@@ -18,4 +18,8 @@ class PacoteViagem extends Model
     {
         return $this->belongsTo('App\Operador', 'operadors_id');
     }
+    public function pedidos()
+    {
+        return $this->hasMany('App\PedidoPacote', 'pacote_id');
+    }
 }

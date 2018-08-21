@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class PedidoPacote extends Model
 {
     protected $fillable = [
-        'nr_viajantes', 'ponto_partida', 'ponto_chegada', 'meio_transporte', 'categoria_meio_transporte', 'data_inicio', 'data_fim','estado', 'detalhes', 'clientes_id',
+        'nr_viajantes', 'ponto_partida', 'ponto_chegada', 'meio_transporte', 'categoria_meio_transporte', 'data_inicio', 'data_fim','estado', 'detalhes', 'pacote_id', 'clientes_id',
     ];
     //Polimorfismos
     public function passagens()
@@ -35,6 +35,10 @@ class PedidoPacote extends Model
     public function cliente()
     {
         return $this->belongsTo('App\Cliente', 'clientes_id');
+    }
+    public function pacote()
+    {
+        return $this->belongsTo('App\PacoteViagem', 'pacote_id');
     }
 
 }

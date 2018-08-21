@@ -36,4 +36,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Endereco', 'enderecos_id');
     }
+    public function cliente()
+    {
+        return $this->hasOne('App\Cliente', 'users_id');
+    }
 }
