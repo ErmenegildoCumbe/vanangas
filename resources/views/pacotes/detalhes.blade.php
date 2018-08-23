@@ -174,7 +174,7 @@
                                             
                                                 <input type="text" class="form-control" name="nrviajantes" value="{{ old('nrviajantes') }}"> <span class="help-block">Informe o Numero de viajantes no campo acima </span> 
                                                 @if ($errors->has('nrviajantes'))
-                                                    <span class="help-block">
+                                                    <span class="text-danger">
                                                         <strong>{{ $errors->first('nrviajantes') }}</strong>
                                                     </span>
                                                 @endif    
@@ -187,7 +187,7 @@
                                             
                                                 <input type="text" class="form-control" name="meiotransport" value="{{ old('meiotransport') }}"> <span class="help-block"> Pode indicar o meio de Transporte preferencial </span> 
                                                 @if ($errors->has('meiotransport'))
-                                                    <span class="help-block">
+                                                    <span class="text-danger">
                                                         <strong>{{ $errors->first('meiotransport') }}</strong>
                                                     </span>
                                                  @endif 
@@ -203,7 +203,7 @@
                                                
                                                     <input type="text" class="form-control" name="pontopartida" value="{{ old('pontopartida') }}"> <span class="help-block">Informe o ponto de partida </span> 
                                                     @if ($errors->has('pontopartida'))
-                                                        <span class="help-block">
+                                                        <span class="text-danger">
                                                             <strong>{{ $errors->first('pontopartida') }}</strong>
                                                         </span>
                                                     @endif 
@@ -234,7 +234,7 @@
                                                             <input type="text" class="form-control" name="start" value="{{ old('start') }}" /> <span class="input-group-addon bg-info b-0 text-white">Até</span>
                                                             <input type="text" class="form-control" name="end" value="{{ old('end') }}" /> </div>
                                                             @if ($errors->has('end'))
-                                                                <span class="help-block">
+                                                                <span class="text-danger">
                                                                     <strong>{{ $errors->first('end') }}</strong>
                                                                 </span>
                                                             @endif 
@@ -245,7 +245,7 @@
                                                     <label class="control-label">Descriçao</label>
                                                     <textarea class="form-control" name="descricao" rows="5"  value="{{ old('descricao') }}"></textarea>
                                                     @if ($errors->has('descricao'))
-                                                        <span class="help-block">
+                                                        <span class="text-danger">
                                                             <strong>{{ $errors->first('descricao') }}</strong>
                                                         </span>
                                                     @endif 
@@ -262,8 +262,7 @@
                                     <div class="col-md-6">
                                         <div class="row">
                                             <div class="col-md-offset-10 col-md-9">
-                                                <button type="submit" class="btn btn-primary">Enviar</button>
-                                                {{--  <button type="button" class="btn btn-default">Cancel</button>  --}}
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -274,7 +273,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    {{--  <button type="submit" class="btn btn-primary" >Enviar</button>  --}}
+                    <button type="submit" class="btn btn-primary"onclick="event.preventDefault();
+                    document.getElementById('formrequestpedido').submit();" >Enviar</button>
                 </div>
             </div>
         </div>

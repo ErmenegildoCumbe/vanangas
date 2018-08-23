@@ -34,6 +34,7 @@
                     <thead>
                         <tr>
                             <th width="70" class="text-center">#</th>
+                            <th>Viajantes</th>
                             <th>Ponto de Partida</th>
                             <th>Ponto de Chegada</th>
                             <th>Início</th>
@@ -42,57 +43,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>Daniel Kristeen
-                                <br/><span class="text-muted">Texas, Unitedd states</span></td>
-                            <td>Visual Designer
-                                <br/><span class="text-muted">Past : teacher</span></td>
-                            <td>15 Mar 1988</td>
-                            <td>15 Mar 1988</td>
-                         
-                            <td>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-key"></i></button>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
+                            <?php  $i=0; ?>
+                            @foreach ($pedidos as $pedido)
+                             
+                                <tr>
+                                    <td class="text-center"> <?php echo ++$i; ?> </td>
+                                    <td> {{ $pedido->nr_viajantes}} </td>
+                                    <td> {{ $pedido->ponto_partida}} </td>
+                                    <td> {{ $pedido->ponto_chegada}} </td>
+                                    <td>{{ $pedido->data_inicio}} </td>
+                                    <td>{{ $pedido->data_fim}} </td>
                                 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">2</td>
-                            <td>Daniel Kristeen
-                                <br/><span class="text-muted">Texas, Unitedd states</span></td>
-                            <td>Visual Designer
-                                <br/><span class="text-muted">Past : teacher</span></td>
-                            <td>15 Mar 1988</td>
-                            <td>15 Mar 1988</td>
-                         
-                            <td>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-key"></i></button>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">3</td>
-                            <td>Daniel Kristeen
-                                <br/><span class="text-muted">Texas, Unitedd states</span></td>
-                            <td>Visual Designer
-                                <br/><span class="text-muted">Past : teacher</span></td>
-                            <td>15 Mar 1988</td>
-                            <td>15 Mar 1988</td>
-                         
-                            <td>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-key"></i></button>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
-                                
-                            </td>
-                        </tr>
-                       
-                        
-                        
+                                    <td>
+                                        <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-key"></i></button>
+                                        <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
+                                        <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
+                                        
+                                    </td>
+                                </tr>
+                            @endforeach   
                     </tbody>
                 </table>
             </div>

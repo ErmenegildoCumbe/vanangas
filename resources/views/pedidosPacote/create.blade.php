@@ -10,7 +10,7 @@
     <div class="row bg-title">
         <!-- .page title -->
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">Início</h4> </div>
+            <h4 class="page-title">Pacotes de Viagem</h4> </div>
         <!-- /.page title -->
         <!-- .breadcrumb -->
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> 
@@ -52,7 +52,7 @@
                                             </div>
                                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                                 <div class="panel-body">
-                                                    <form action="#" class="form-material form-horizontal">
+                                                    <form action="{{ route('pedidoPacote.store') }}" class="form-material form-horizontal" method="POST">
                                                             {{ csrf_field() }}
                                                         <div class="form-body">
                                                             <h3 class="box-title">Informaçao sobre os pontos</h3>
@@ -62,7 +62,7 @@
                                                                     <div class="form-group">
                                                                         <label class="control-label">Numero de Viajantes</label>
                                                                         
-                                                                            <input type="text" class="form-control" name="nrviajantes" placeholder=""> <span class="help-block">Informe o Numero de viajantes no campo acima </span> 
+                                                                            <input type="text" class="form-control" name="nrviajantes" value="{{ old('nrviajantes') }}"> <span class="help-block">Informe o Numero de viajantes no campo acima </span> 
                                                                             @if ($errors->has('nrviajantes'))
                                                                             <span class="help-block">
                                                                                 <strong>{{ $errors->first('nrviajantes') }}</strong>
@@ -75,7 +75,7 @@
                                                                     <div class="form-group">
                                                                         <label class="control-label">Meio de Transporte</label>
                                                                         
-                                                                            <input type="text" class="form-control" name="transporte" placeholder=""> <span class="help-block"> Pode indicar o meio de Transporte preferencial </span> 
+                                                                            <input type="text" class="form-control" name="transporte" value="{{ old('transporte') }}"> <span class="help-block"> Pode indicar o meio de Transporte preferencial </span> 
                                                                             @if ($errors->has('transporte'))
                                                                             <span class="help-block">
                                                                                 <strong>{{ $errors->first('transporte') }}</strong>
@@ -91,7 +91,7 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label">Ponto de Partida</label>
                                                                            
-                                                                                <input type="text" class="form-control" name="partida" placeholder=""> <span class="help-block">Informe o ponto de partida </span> 
+                                                                                <input type="text" class="form-control" name="partida"  value="{{ old('partida') }}"> <span class="help-block">Informe o ponto de partida </span> 
                                                                                 @if ($errors->has('partida'))
                                                                                 <span class="help-block">
                                                                                     <strong>{{ $errors->first('partida') }}</strong>
@@ -104,7 +104,7 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label">Destino</label>
                                                                            
-                                                                                <input type="text" class="form-control" name="destino" placeholder=""> <span class="help-block"> Informe o ponto de partida </span> 
+                                                                                <input type="text" class="form-control" name="destino" value="{{ old('destino') }}"> <span class="help-block"> Informe o ponto de partida </span> 
                                                                                 @if ($errors->has('destino'))
                                                                                     <span class="help-block">
                                                                                         <strong>{{ $errors->first('destino') }}</strong>
@@ -125,14 +125,21 @@
                                                                                     <label class="control-label">Duraçao do Pacote</label>
                                                                                     <p class="text-muted m-b-20"> Selecione o principio e o fim da Estadia no destino</p>
                                                                                     <div class="input-daterange input-group" id="date-range">
-                                                                                        <input type="text" class="form-control" name="start" /> <span class="input-group-addon bg-info b-0 text-white">Até</span>
-                                                                                        <input type="text" class="form-control" name="end" /> </div>
+                                                                                        <input type="text" class="form-control" name="start" value="{{ old('start') }}"/> <span class="input-group-addon bg-info b-0 text-white">Até</span>
+                                                                                        <input type="text" class="form-control" name="end" value="{{ old('end') }}" /> 
+                                                                                        @if ($errors->has('end'))
+                                                                                            <span class="help-block">
+                                                                                                <strong>{{ $errors->first('end') }}</strong>
+                                                                                            </span>
+                                                                                        @endif
+                                                                                    </div>
+                                                                                        
                                                                                 </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                             <div class="form-group">
                                                                                 <label class="control-label">Descriçao</label>
-                                                                                <textarea class="form-control" rows="5" name="descricao"></textarea>
+                                                                                <textarea class="form-control" rows="5" name="descricao" value="{{ old('descricao') }}"></textarea>
                                                                                 @if ($errors->has('descricao'))
                                                                                     <span class="help-block">
                                                                                         <strong>{{ $errors->first('descricao') }}</strong>
@@ -151,7 +158,7 @@
                                                                 <div class="col-md-6">
                                                                     <div class="row">
                                                                         <div class="col-md-offset-3 col-md-9">
-                                                                            <button type="submit" class="btn btn-success">Submit</button>
+                                                                            <button type="submit" class="btn btn-success">Requisitar</button>
                                                                             <button type="button" class="btn btn-default">Cancel</button>
                                                                         </div>
                                                                     </div>

@@ -61,7 +61,7 @@
                                                                     <div class="form-group">
                                                                         <label class="control-label">Numero de Viajantes</label>
                                                                         
-                                                                            <input type="text" class="form-control" placeholder=""> <span class="help-block">Informe o Numero de viajantes no campo acima </span> 
+                                                                            <input type="text" class="form-control" value="{{ $pedido->nr_viajantes }}"> <span class="help-block">Informe o Numero de viajantes no campo acima </span> 
                                                                        
                                                                     </div>
                                                                 </div>
@@ -70,7 +70,7 @@
                                                                     <div class="form-group">
                                                                         <label class="control-label">Meio de Transporte</label>
                                                                         
-                                                                            <input type="text" class="form-control" placeholder=""> <span class="help-block"> Pode indicar o meio de Transporte preferencial </span> 
+                                                                            <input type="text" class="form-control" value="{{ $pedido->meio_transporte }}"> <span class="help-block"> Pode indicar o meio de Transporte preferencial </span> 
                                                                        
                                                                     </div>
                                                                 </div>
@@ -82,7 +82,7 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label">Ponto de Partida</label>
                                                                            
-                                                                                <input type="text" class="form-control" placeholder=""> <span class="help-block">Informe o ponto de partida </span> 
+                                                                                <input type="text" class="form-control" value="{{ $pedido->ponto_partida }}"> <span class="help-block">Informe o ponto de partida </span> 
                                                                             
                                                                         </div>
                                                                     </div>
@@ -91,7 +91,7 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label">Destino</label>
                                                                            
-                                                                                <input type="text" class="form-control" placeholder=""> <span class="help-block"> Informe o ponto de partida </span> 
+                                                                                <input type="text" class="form-control" value="{{ $pedido->ponto_chegada }}"> <span class="help-block"> Informe o ponto de partida </span> 
                                                                            
                                                                         </div>
                                                                     </div>
@@ -108,14 +108,14 @@
                                                                                     <label class="control-label">Duraçao do Pacote</label>
                                                                                     <p class="text-muted m-b-20"> Selecione o principio e o fim da Estadia no destino</p>
                                                                                     <div class="input-daterange input-group" id="date-range">
-                                                                                        <input type="text" class="form-control" name="start" /> <span class="input-group-addon bg-info b-0 text-white">Até</span>
-                                                                                        <input type="text" class="form-control" name="end" /> </div>
+                                                                                        <input type="text" class="form-control" name="start" value="{{ $pedido->data_inicio }}" /> <span class="input-group-addon bg-info b-0 text-white">Até</span>
+                                                                                        <input type="text" class="form-control" name="end" value="{{ $pedido->data_fim }}"/> </div>
                                                                                 </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                             <div class="form-group">
                                                                                 <label class="control-label">Descriçao</label>
-                                                                                <textarea class="form-control" rows="5"></textarea>
+                                                                                <textarea class="form-control" rows="5"> {{ $pedido->detalhes }} </textarea>
                                                                             </div>
                                                                     </div>
                                                                         <!--/span-->
@@ -155,7 +155,7 @@
                                                     <h4 class="modal-title" id="exampleModalLabel1">Inserçao de Passageiro</h4> 
                                                 </div>
                                                 <div class="modal-body col-md-offset-1 col-sm-offset-1">
-                                                        <form action="#" class="form-material form-horizontal">
+                                                        <form action="{{ route('addPassenger', ['id'=>$pedido->id]) }}" class="form-material form-horizontal" id="formaddpassanger" method="POST">
                                                                 {{ csrf_field() }}
                                                             <div class="form-body">
                                                                 <h3 class="box-title">Informaçao sobre o Passageiro</h3>
@@ -164,16 +164,24 @@
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label class="control-label">Nome</label>                                                                            
-                                                                            <input type="text" class="form-control" placeholder="">  
-                                                                           
+                                                                            <input type="text" class="form-control" name="nome"  value="{{ old('nome') }}">  
+                                                                            @if ($errors->has('nome'))
+                                                                                <span class="text-danger">
+                                                                                    <strong>{{ $errors->first('nome') }}</strong>
+                                                                                </span>
+                                                                            @endif 
                                                                         </div>
                                                                     </div>
                                                                     <!--/span-->
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label class="control-label">Apelido</label>                                                                            
-                                                                            <input type="text" class="form-control" placeholder="">  
-                                                                           
+                                                                            <input type="text" class="form-control" name="apelido" value="{{ old('apelido') }}">  
+                                                                            @if ($errors->has('apelido'))
+                                                                                <span class="text-danger">
+                                                                                    <strong>{{ $errors->first('apelido') }}</strong>
+                                                                                </span>
+                                                                            @endif 
                                                                         </div>
                                                                     </div>
                                                                     <!--/span-->
@@ -183,19 +191,28 @@
                                                                         <div class="col-md-6">
                                                                             <div class="form-group">
                                                                                     <label class="control-label">Forma de Tratamento</label>
-                                                                                    <select class="form-control">                                                                                           
-                                                                                            <option>Sr.</option>
-                                                                                            <option>Sra.</option>
-                                                                                            <option>Excia.</option>                                                                                            
+                                                                                    <select class="form-control" name="tratamento">                                                                                           
+                                                                                            <option value="Sr.">Sr.</option>
+                                                                                            <option value="Sra.">Sra.</option>
+                                                                                            <option value="Excia.">Excia.</option>                                                                                            
                                                                                     </select>
+                                                                                    @if ($errors->has('tratamento'))
+                                                                                        <span class="text-danger">
+                                                                                            <strong>{{ $errors->first('tratamento') }}</strong>
+                                                                                        </span>
+                                                                                    @endif 
                                                                             </div>
                                                                         </div>
                                                                         <!--/span-->
                                                                         <div class="col-md-6">
                                                                             <div class="form-group">
                                                                                 <label class="control-label">Data Nascimento</label>                                                                               
-                                                                                    <input type="text" class="form-control" placeholder="dd/mm/aaaa">
-                                                                               
+                                                                                <input type="text" class="form-control" id="datepicker-autoclose" name="nascimento" value="{{ old('nascimento') }}" placeholder="mm/dd/yyyy">
+                                                                                    @if ($errors->has('nascimento'))
+                                                                                        <span class="text-danger">
+                                                                                            <strong>{{ $errors->first('nascimento') }}</strong>
+                                                                                        </span>
+                                                                                    @endif 
                                                                             </div>
                                                                         </div>
                                                                         <!--/span-->
@@ -205,20 +222,30 @@
                                                                         <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                         <label class="control-label">Sexo</label>                                                                                        
-                                                                                        <select class="form-control">                                                                                           
-                                                                                                <option>Masculino</option>
-                                                                                                <option>Feminino</option>                                                                                                                                                                                           
+                                                                                        <select class="form-control" name="sexo">                                                                                           
+                                                                                                <option value="Masculino">Masculino</option>
+                                                                                                <option value="Feminino">Feminino</option>                                                                                                                                                                                           
                                                                                         </select>
-                                                                                    </div>
+                                                                                        @if ($errors->has('sexo'))
+                                                                                            <span class="text-danger">
+                                                                                                <strong>{{ $errors->first('sexo') }}</strong>
+                                                                                            </span>
+                                                                                        @endif 
+                                                                                </div>
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label class="control-label">Tipo de Passageiro</label>
-                                                                                    <select class="form-control">                                                                                           
-                                                                                            <option>Adulto (> 12)</option>
-                                                                                            <option>Criança (> 2)</option>
-                                                                                            <option>Bébé (< 2)</option>                                                                                                                                                                                           
+                                                                                    <select class="form-control" name="tipoPassageiro">                                                                                           
+                                                                                            <option value="1">Adulto (> 12)</option>
+                                                                                            <option value="2">Criança (> 2)</option>
+                                                                                            <option value="3">Bébé (< 2)</option>                                                                                                                                                                                           
                                                                                     </select>
+                                                                                    @if ($errors->has('tipoPassageiro'))
+                                                                                        <span class="text-danger">
+                                                                                            <strong>{{ $errors->first('tipoPassageiro') }}</strong>
+                                                                                        </span>
+                                                                                    @endif 
                                                                                 </div>
                                                                         </div>                                                                   
     
@@ -230,7 +257,8 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Send message</button>
+                                                    <button type="button" class="btn btn-primary" onclick="event.preventDefault();
+                                                    document.getElementById('formaddpassanger').submit();">Adicionar</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -254,55 +282,29 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td class="text-center">1</td>
-                                                        <td>Daniel Kristeen
-                                                            <br/><span class="text-muted">Texas, Unitedd states</span></td>
-                                                        <td>Feminino</td>
-                                                        <td>daniel@website.com
-                                                            <br/><span class="text-muted">999 - 444 - 555</span></td>
-                                                        <td>15 Mar 1988
-                                                            <br/><span class="text-muted">10: 55 AM</span></td>
-                                                     
-                                                        <td>                                                            
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-20"><i class="ti-upload"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">2</td>
-                                                        <td>Daniel Kristeen
-                                                            <br/><span class="text-muted">Texas, Unitedd states</span></td>
-                                                        <td>Feminino</td>
-                                                        <td>daniel@website.com
-                                                            <br/><span class="text-muted">999 - 444 - 555</span></td>
-                                                        <td>15 Mar 1988
-                                                            <br/><span class="text-muted">10: 55 AM</span></td>
-                                                     
-                                                        <td>                                                            
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-20"><i class="ti-upload"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">3</td>
-                                                        <td>Daniel Kristeen
-                                                            <br/><span class="text-muted">Texas, Unitedd states</span></td>
-                                                        <td>Masculino </td>
-                                                        <td>daniel@website.com
-                                                            <br/><span class="text-muted">999 - 444 - 555</span></td>
-                                                        <td>15 Mar 1988
-                                                            <br/><span class="text-muted">10: 55 AM</span></td>
+                                                        <?php  $i=0; ?>
+                                                    @foreach ($passageiros as $passageiro) 
+                                                        <tr>
+                                                            <td class="text-center"> <?php echo ++$i; ?> </td>
+                                                            <td> {{ $passageiro->nome}} {{ $passageiro->apelido}}</td>
+                                                            <td>{{ $passageiro->sexo}}</td>
+                                                            <td> <?php if ( $passageiro->tipo ==1){
+                                                                    echo "Adulto";    
+                                                                }
+                                                                    else if($passageiro->tipo ==2){
+                                                                        echo "Criança";
+                                                                    }
+                                                                    else
+                                                                        echo "Bébé"; ?> </td>
+                                                            <td> {{ $passageiro->data_nascimento}} </td>
                                                         
-                                                        <td>                                                            
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-20"><i class="ti-upload"></i></button>
-                                                        </td>
-                                                    </tr>                        
-                                                                                                 
+                                                            <td>                                                            
+                                                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
+                                                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
+                                                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-20"><i class="ti-upload"></i></button>
+                                                            </td>
+                                                        </tr>  
+                                                    @endforeach                                                                                             
                                                 </tbody>
                                             </table>
                                         </div>
@@ -319,7 +321,7 @@
                                     </div>
                                     <div class="panel-wrapper collapse in" aria-expanded="true">
                                         <div class="panel-body">
-                                            <form action="#" class="form-material form-horizontal">
+                                            <form action="{{ route('addContact', ['id'=>$pedido->id]) }}" class="form-material form-horizontal" method="POST">
                                                     {{ csrf_field() }}
                                                 <div class="form-body">
                                                     <h3 class="box-title">Contacto Principal</h3>
@@ -328,8 +330,12 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label class="control-label">Email</label>                                                                
-                                                                    <input type="email" class="form-control" placeholder=""> <span class="help-block">Informe o Numero de viajantes no campo acima </span> 
-                                                               
+                                                                    <input type="email" class="form-control" name="pincipemail" value="<?php if(isset($contacto->emailprincipal)) echo $contacto->emailprincipal; ?> "> <span class="help-block">Informe o Numero de viajantes no campo acima </span> 
+                                                                    @if ($errors->has('pincipemail'))
+                                                                        <span class="text-danger">
+                                                                            <strong>{{ $errors->first('pincipemail') }}</strong>
+                                                                        </span>
+                                                                    @endif 
                                                             </div>
                                                         </div>
                                                         <!--/span-->
@@ -337,8 +343,12 @@
                                                             <div class="form-group">
                                                                 <label class="control-label">Telefone</label>
                                                                 
-                                                                    <input type="text" class="form-control" placeholder=""> <span class="help-block"> Pode indicar o meio de Transporte preferencial </span> 
-                                                               
+                                                                    <input type="text" class="form-control" name="principtelefone" value="<?php if(isset($contacto->telefoneprincipal)) echo $contacto->telefoneprincipal; ?> "> <span class="help-block"> Pode indicar o meio de Transporte preferencial </span> 
+                                                                    @if ($errors->has('principtelefone'))
+                                                                        <span class="text-danger">
+                                                                            <strong>{{ $errors->first('principtelefone') }}</strong>
+                                                                        </span>
+                                                                    @endif 
                                                             </div>
                                                         </div>
                                                         <!--/span-->
@@ -351,8 +361,12 @@
                                                                 <div class="form-group">
                                                                     <label class="control-label">Email</label>
                                                                    
-                                                                        <input type="email" class="form-control" placeholder=""> <span class="help-block">Informe o ponto de partida </span> 
-                                                                    
+                                                                        <input type="email" class="form-control" name="emergemail" value="<?php if(isset($contacto->emailemergencia)) echo $contacto->emailemergencia; ?>"> <span class="help-block">Informe o ponto de partida </span> 
+                                                                        @if ($errors->has('emergemail'))
+                                                                            <span class="text-danger">
+                                                                                <strong>{{ $errors->first('emergemail') }}</strong>
+                                                                            </span>
+                                                                        @endif 
                                                                 </div>
                                                             </div>
                                                             <!--/span-->
@@ -360,8 +374,12 @@
                                                                 <div class="form-group">
                                                                     <label class="control-label">Telefone</label>
                                                                    
-                                                                        <input type="text" class="form-control" placeholder=""> <span class="help-block"> Informe o ponto de partida </span> 
-                                                                   
+                                                                        <input type="text" class="form-control" name="emergtelefone" value="<?php if(isset($contacto->telefoneemergencia)) echo $contacto->telefoneemergencia; ?>"> <span class="help-block"> Informe o ponto de partida </span> 
+                                                                        @if ($errors->has('emergtelefone'))
+                                                                            <span class="text-danger">
+                                                                                <strong>{{ $errors->first('emergtelefone') }}</strong>
+                                                                            </span>
+                                                                        @endif 
                                                                 </div>
                                                             </div>
                                                             <!--/span-->

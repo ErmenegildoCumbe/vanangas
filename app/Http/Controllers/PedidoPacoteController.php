@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\PacoteViagem;
 use App\PedidoPacote;
+use App\Contacto;
+use App\Passageiro;
 use App\User;
 use Auth;
+use App\Cliente;
 class PedidoPacoteController extends Controller
 {
     /**
@@ -37,23 +40,21 @@ class PedidoPacoteController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validation($request);
-        $pacote = PacoteViagem::findOrFail($id);
+        $this->validation($request);        
         $pedido = new PedidoPacote;
 
         $pedido->nr_viajantes = $request->nrviajantes;
-        $pedido->ponto_partida = $request->pontopartida;
-        $pedido->ponto_chegada = $pacote->local;
-        $pedido->meio_transporte = $request->meiotransport;
+        $pedido->ponto_partida = $request->partida;
+        $pedido->ponto_chegada = $request->destino;
+        $pedido->meio_transporte = $request->transporte;
         $pedido->data_inicio = date_create($request->start);
         $pedido->data_fim = date_create($request->end);
         $pedido->detalhes = $request->descricao;
-        $pedido->estado = 1;
-        $pedido->pacote_id = $pacote->id;
-        $cliente = User::find(Auth::id())->cliente;
+        $pedido->estado = 1;        
+        $cliente = User::findOrFail(Auth::id())->cliente;
         $pedido->clientes_id = $cliente->id;
         $pedido->save();
-        return redirect('pacote');
+        return redirect()->route('pedidoPacote.edit', ['id' => $pedido->id]);
     }
 
     /**
@@ -75,7 +76,11 @@ class PedidoPacoteController extends Controller
      */
     public function edit($id)
     {
-        return view('pedidosPacote.edit');
+        $pedido = PedidoPacote::findOrFail($id);
+        $passageiros = $pedido->passageiros;
+        $passagens = $pedido->passagens;
+        $contacto = $pedido->contacto;
+        return view('pedidosPacote.edit', compact('pedido', 'passageiros', 'passagens','contacto'));
     }
 
     /**
@@ -121,18 +126,81 @@ class PedidoPacoteController extends Controller
            $pedido->detalhes = $request->descricao;
            $pedido->estado = 1;
            $pedido->pacote_id = $pacote->id;
-           $cliente = User::find(Auth::id())->cliente;
+           $cliente = User::findOrFail(Auth::id())->cliente;
            $pedido->clientes_id = $cliente->id;
            $pedido->save();
            return redirect('pacote');
     }
+    public function addPassenger(Request $request, $id){
+        $this->validate($request, [
+            'nome' => 'required|string|max:60',
+            'apelido' => 'required|string|max:20',
+            'tratamento' => 'required|string|max:20',
+            'nascimento' => 'required|date',
+            'sexo' => 'required|string',
+            'tipoPassageiro' => 'required|numeric|max:3',
+           ]);
+           $pedido = PedidoPacote::findOrFail($id);
+            $passageiro = new Passageiro;
+            $passageiro->nome = $request->nome;
+            $passageiro->apelido = $request->apelido;
+            $passageiro->forma_tratamento = $request->tratamento;
+            $passageiro->data_nascimento = date_create($request->nascimento);
+            $passageiro->sexo = $request->sexo;
+            $passageiro->tipo = $request->tipoPassageiro;
+            $passageiro->passageiroable_id = $pedido->id;
+            $passageiro->passageiroable_type = "pacote";
+            $passageiro->save();
+             
+            return redirect()->back();
+            
+    }
+    public function addContact(Request $request, $id){
+        $this->validate($request, [
+            'pincipemail' => 'required|email|max:100',
+            'principtelefone' => 'required|string|max:15',
+            'emergemail' => 'nullable|email|max:100',
+            'emergtelefone' => 'nullable|string|max:15',
+           ]);
+           $pedido = PedidoPacote::findOrFail($id);
+            $contacto = new Contacto;
+            $contacto->emailprincipal = $request->pincipemail;
+            $contacto->telefoneprincipal = $request->principtelefone;
+            $contacto->emailemergencia = $request->emergemail;
+            $contacto->telefoneemergencia = $request->emergtelefone;
+            $contacto->contactable_id = $pedido->id;
+            $contacto->contactable_type = "pacote";
+            $contacto->save();
+
+            return redirect()->back();
+    }
+    public function pendents(){
+        $clientes = Cliente::where('users_id',  Auth::id())->get();
+        $pedidos = PedidoPacote::where('clientes_id', $clientes[0]->id)
+        ->where('estado', 1)->get();
+        return view('pedidospacote.meuspedidos.pendentes', compact('pedidos'));
+    }
+    public function comfirmados(){
+        $clientes = Cliente::where('users_id',  Auth::id())->get();
+        $pedidos = PedidoPacote::where('clientes_id', $clientes[0]->id)
+        ->where('estado', 2)->get();
+        return view('pedidospacote.meuspedidos.confirmados', compact('pedidos'));
+    }
+    public function cancelados(){
+        $clientes = Cliente::where('users_id',  Auth::id())->get();
+        $pedidos = PedidoPacote::where('clientes_id', $clientes[0]->id)
+        ->where('estado', 3)->get();
+        return view('pedidospacote.meuspedidos.cancelados', compact('pedidos'));
+    }
     protected function validation($request){
         return $this->validate($request, [
-         'designacao' => 'required|string|max:55',
-         'descricao' => 'required|string|max:255',
+        'nrviajantes' => 'required|numeric|max:99',
+        'transporte' => 'nullable|alpha_num|max:55',
+         'partida' => 'required|alpha_num|max:55',
+         'destino' => 'required|alpha_num|max:55',
          'start' =>'required|date',
          'end' =>'required|date',
-         'local' =>'required|string|max:115',         
+         'descricao' =>'required|string',         
         ]);
     }
 }

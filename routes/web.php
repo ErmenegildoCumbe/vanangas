@@ -22,15 +22,7 @@ Route::get('/home', function () {
 Route::get('pacote/requisitar', function () {
     return view('pacotes.requisitar');
 });
-Route::get('pedidoPacote/pendentes', function () {
-    return view('pedidospacote.meuspedidos.pendentes');
-})->name('pedidospendentes'); 
-Route::get('pedidoPacote/confirmados', function () {
-    return view('pedidospacote.meuspedidos.confirmados');
-})->name('pedidosconfirmados'); 
-Route::get('pedidoPacote/cancelados', function () {
-    return view('pedidospacote.meuspedidos.cancelados');
-})->name('pedidoscancelados'); 
+
 //Rotas pacote de viagem
 Route::resource('pacote', 'PacoteController');
 Route::get('pacote/{id}/editimage', 'PacoteController@showaddimages')->name('pacoteimages');
@@ -38,6 +30,11 @@ Route::post('pacote/addimages', 'PacoteController@addimages')->name('addimage');
 //pedido pacote de viagem
 Route::resource('pedidoPacote', 'PedidoPacoteController');
 Route::post('pedidoPacote/{id}', 'PedidoPacoteController@viaPacote')->name('addPedidoViaPacote');
+Route::post('pedidoPacote/addpassenger/{id}', 'PedidoPacoteController@addPassenger')->name('addPassenger');
+Route::post('pedidoPacote/addcontacts/{id}', 'PedidoPacoteController@addContact')->name('addContact');
+Route::get('meuspedidos/pacotes/pendentes', 'PedidoPacoteController@pendents')->name('pedidospendentes'); 
+Route::get('meuspedidos/pacotes/confirmados', 'PedidoPacoteController@comfirmados')->name('pedidosconfirmados'); 
+Route::get('meuspedidos/pacotes/cancelados', 'PedidoPacoteController@cancelados')->name('pedidoscancelados'); 
 //rotas de passagens
 Route::resource('pedidoPassagem', 'PedidoPassagemController');
 

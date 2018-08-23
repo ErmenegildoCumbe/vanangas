@@ -20,8 +20,8 @@ class CreatePedidoPacotesTable extends Migration
             $table->string('ponto_chegada');
             $table->string('meio_transporte')->nullable();
             $table->string('categoria_meio_transporte')->nullable();
-            $table->dateTime('data_inicio');
-            $table->dateTime('data_fim');
+            $table->date('data_inicio');
+            $table->date('data_fim');
             $table->integer('estado');
             $table->mediumText('detalhes');
             $table->integer('pacote_id')->unsigned()->nullable();
