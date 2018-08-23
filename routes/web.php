@@ -22,7 +22,7 @@ Route::get('/home', function () {
 Route::get('pacote/requisitar', function () {
     return view('pacotes.requisitar');
 });
-
+ 
 //Rotas pacote de viagem
 Route::resource('pacote', 'PacoteController');
 Route::get('pacote/{id}/editimage', 'PacoteController@showaddimages')->name('pacoteimages');
