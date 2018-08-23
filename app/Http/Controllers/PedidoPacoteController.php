@@ -105,6 +105,7 @@ class PedidoPacoteController extends Controller
     {
         //
     }
+    //Efectuar pedido de pacote de viagem atravês da lista de pacotes
     public function viaPacote(Request $request, $id){
         $this->validate($request, [
             'nrviajantes' => 'required|numeric|max:99',
@@ -131,6 +132,7 @@ class PedidoPacoteController extends Controller
            $pedido->save();
            return redirect('pacote');
     }
+    //Adicionar passageiro
     public function addPassenger(Request $request, $id){
         $this->validate($request, [
             'nome' => 'required|string|max:60',
@@ -155,6 +157,7 @@ class PedidoPacoteController extends Controller
             return redirect()->back();
             
     }
+    //Adicionar contactos
     public function addContact(Request $request, $id){
         $this->validate($request, [
             'pincipemail' => 'required|email|max:100',
@@ -174,6 +177,7 @@ class PedidoPacoteController extends Controller
 
             return redirect()->back();
     }
+    //funcoes do menu meus pedidos
     public function pendents(){
         $clientes = Cliente::where('users_id',  Auth::id())->get();
         $pedidos = PedidoPacote::where('clientes_id', $clientes[0]->id)
@@ -192,12 +196,26 @@ class PedidoPacoteController extends Controller
         ->where('estado', 3)->get();
         return view('pedidospacote.meuspedidos.cancelados', compact('pedidos'));
     }
+    public function cancelar($id){
+        $pedido = PedidoPacote::findOrFail($id);
+        $pedido->estado = 3;
+        $pedido->save();         
+        return redirect()->back();
+        
+    }
+    public function showPedido($id){
+        $pedido = PedidoPacote::findOrFail($id);
+        $passageiros = $pedido->passageiros;
+        $passagens = $pedido->passagens;
+        $contacto = $pedido->contacto;
+        return view('pedidosPacote.show', compact('pedido', 'passageiros', 'passagens','contacto'));
+    }
     protected function validation($request){
         return $this->validate($request, [
         'nrviajantes' => 'required|numeric|max:99',
-        'transporte' => 'nullable|alpha_num|max:55',
-         'partida' => 'required|alpha_num|max:55',
-         'destino' => 'required|alpha_num|max:55',
+        'transporte' => 'nullable|string|max:55',
+         'partida' => 'required|string|max:55',
+         'destino' => 'required|string|max:55',
          'start' =>'required|date',
          'end' =>'required|date',
          'descricao' =>'required|string',         

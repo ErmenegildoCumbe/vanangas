@@ -35,6 +35,8 @@ Route::post('pedidoPacote/addcontacts/{id}', 'PedidoPacoteController@addContact'
 Route::get('meuspedidos/pacotes/pendentes', 'PedidoPacoteController@pendents')->name('pedidospendentes'); 
 Route::get('meuspedidos/pacotes/confirmados', 'PedidoPacoteController@comfirmados')->name('pedidosconfirmados'); 
 Route::get('meuspedidos/pacotes/cancelados', 'PedidoPacoteController@cancelados')->name('pedidoscancelados'); 
+Route::get('meuspedidos/pacotes/cancelar/{id}', 'PedidoPacoteController@cancelar')->name('cancelarPedido'); 
+Route::get('meuspedidos/pacotes/confirmados/{id}', 'PedidoPacoteController@showPedido')->name('showpedido'); 
 //rotas de passagens
 Route::resource('pedidoPassagem', 'PedidoPassagemController');
 

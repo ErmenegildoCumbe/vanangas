@@ -55,9 +55,7 @@
                                     <td>{{ $pedido->data_fim}} </td>
                                 
                                     <td>
-                                        <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-key"></i></button>
-                                        <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                        <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
+                                        <a class="btn btn-info btn-outline btn-circle btn-lg m-r-5" href="{{ route('showpedido', ['id'=>$pedido->id]) }} "><i class="ti-eye"></i></a>
                                         
                                     </td>
                                 </tr>
