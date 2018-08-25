@@ -16,9 +16,11 @@ class CreatePedidoPassagemsTable extends Migration
         Schema::create('pedido_passagems', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('nr_passageiros');
+            $table->integer('tipo_reserva');
             $table->string('ponto_partida');
             $table->string('ponto_chegada');
-            $table->dateTime('data_partida');
+            $table->date('data_partida');
+            $table->date('data_retorno')->nullable();
             $table->mediumText('descricao');
             $table->integer('estado');           
             $table->integer('clientes_id')->unsigned();

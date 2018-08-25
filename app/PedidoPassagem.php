@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class PedidoPassagem extends Model
 {
     protected $fillable = [
-        'nr_passageiros', 'ponto_partida', 'ponto_chegada', 'data_partida', 'descricao', 'estado', 'clientes_id',  
+        'nr_passageiros', 'ponto_partida', 'ponto_chegada', 'data_partida', 'descricao', 'tipo_reserva', 'data_retorno', 'estado', 'clientes_id',  
     ];
 
     //Polimorfismos

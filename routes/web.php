@@ -38,26 +38,15 @@ Route::get('meuspedidos/pacotes/cancelados', 'PedidoPacoteController@cancelados'
 Route::get('meuspedidos/pacotes/cancelar/{id}', 'PedidoPacoteController@cancelar')->name('cancelarPedido'); 
 Route::get('meuspedidos/pacotes/confirmados/{id}', 'PedidoPacoteController@showPedido')->name('showpedido'); 
 //rotas de passagens
-Route::resource('pedidoPassagem', 'PedidoPassagemController');
-
-Route::get('pedidoPassagem/requisicoes', function () {
-    return view('passagens.requisicoes');
-})->name('pedidospassagem'); 
-Route::get('pedidoPassagem/requisicoes/canceladas', function () {
-    return view('passagens.requisicoescanceladas');
-})->name('pedidospassagemCancelados'); 
-Route::get('pedidoPassagem/requisicoes/confirmadas', function () {
-    return view('passagens.requisicoesconfirmadas');
-})->name('pedidospassagemconfirmados'); 
-Route::get('pedidoPassagem/confirmados', function () {
-    return view('passagens.meuspedidos.confirmados');
-})->name('meusconfirmados');
-Route::get('pedidoPassagem/pendentes', function () {
-    return view('passagens.meuspedidos.pendentes');
-})->name('meuspendentes');
-Route::get('pedidoPassagem/cancelados', function () {
-    return view('passagens.meuspedidos.cancelados');
-})->name('meuscancelados'); 
+Route::resource('pedidoPassagem', 'PedidoPassagemController'); 
+Route::get('pedidoPassagem/requisicoes/canceladas', 'PedidoPassagemController@cancelados')->name('pedidospassagemCancelados'); 
+Route::get('pedidoPassagem/requisicoes/confirmadas', 'PedidoPassagemController@comfirmados')->name('pedidospassagemconfirmados');
+Route::get('pedidoPassagem/requisicoes/cancelar/{id}', 'PedidoPassagemController@cancelar')->name('cancelarRequisicao');
+Route::get('pedidoPassagem/{id}/detalhes', 'PedidoPassagemController@showPedido')->name('showrequisicao'); 
+Route::get('pedidoPassagem/meus/confirmados', 'PedidoPassagemController@meusComfirmados')->name('meusconfirmados');
+Route::get('pedidoPassagem/meus/pendentes', 'PedidoPassagemController@pendents')->name('meuspendentes');
+Route::get('pedidoPassagem/meus/cancelados', 'PedidoPassagemController@meusCancelados')->name('meuscancelados'); 
+Route::get('pedidoPassagem/meus/{id}/cancelado', 'PedidoPassagemController@showOwenPedido')->name('showcanceled');
 
 //rotas de users
 Route::resource('operadores', 'OperadorsController');

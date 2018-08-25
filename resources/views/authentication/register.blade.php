@@ -51,13 +51,13 @@
             <h3 class="fs-subtitle">Este é o primeiro passo</h3>
             <input type="text" name="email" placeholder="Email" value="{{ old('email') }}" />
             @if ($errors->has('email'))
-            <span class="help-block">
+            <span class="text-danger">
                 <strong>{{ $errors->first('email') }}</strong>
             </span>
             @endif
             <input type="password" name="password" placeholder="Senha" />
             @if ($errors->has('password'))
-            <span class="help-block">
+            <span class="text-danger">
                 <strong>{{ $errors->first('password') }}</strong>
             </span>
             @endif
@@ -69,19 +69,19 @@
             <h3 class="fs-subtitle">Nunca iremos vender teus dados</h3>
             <input type="text" name="fname" placeholder="Primeiro Nome" value="{{ old('fname') }}" />
             @if ($errors->has('fname'))
-            <span class="help-block">
+            <span class="text-danger">
                 <strong>{{ $errors->first('fname') }}</strong>
             </span>
             @endif
             <input type="text" name="lname" placeholder="Ultimo Nome" value="{{ old('lname') }}" />
             @if ($errors->has('lname'))
-            <span class="help-block">
+            <span class="text-danger">
                 <strong>{{ $errors->first('lname') }}</strong>
             </span>
             @endif
             <input type="text" name="phone" placeholder="Telefone" value="{{ old('phone') }}" />
             @if ($errors->has('phone'))
-                            <span class="help-block">
+                            <span class="text-danger">
                                 <strong>{{ $errors->first('phone') }}</strong>
                             </span>
             @endif        

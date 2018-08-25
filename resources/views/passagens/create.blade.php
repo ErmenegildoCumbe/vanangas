@@ -10,7 +10,7 @@
     <div class="row bg-title">
         <!-- .page title -->
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">Início</h4> </div>
+            <h4 class="page-title">Reserva de Passagem</h4> </div>
         <!-- /.page title -->
         <!-- .breadcrumb -->
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> 
@@ -27,8 +27,8 @@
     {{-- conteudo --}}
     <div class="col-lg-12 col-sm-12 col-xs-12">
         <div class="white-box">
-            <h3 class="box-title">Pedido de Pacote</h3>
-            <p class="text-muted m-b-30">Informe todos dados referentes ao Pedido </p>
+            <h3 class="box-title">Dados da Reserva</h3>
+            <p class="text-muted m-b-30">Informe todos dados referentes a sua reserva </p>
             <div class="vtabs">
                 <ul class="nav tabs-vertical">
                     <li class="tab active">
@@ -48,11 +48,11 @@
                     <div id="basicas" class="tab-pane active">
                                 <div class="panel panel-info">
                                             <div class="panel-heading"> 
-                                                Insira os dados do Pacote
+                                                Insira os dados da Reserva de Passagem
                                             </div>
                                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                                 <div class="panel-body">
-                                                    <form action="#" class="form-material form-horizontal">
+                                                    <form action="{{ route('pedidoPassagem.store') }}" class="form-material form-horizontal" method="POST">
                                                             {{ csrf_field() }}
                                                         <div class="form-body">
                                                             <h3 class="box-title">Informaçao sobre os pontos</h3>
@@ -62,8 +62,12 @@
                                                                     <div class="form-group">
                                                                         <label class="control-label">Numero de Viajantes</label>
                                                                         
-                                                                            <input type="text" class="form-control" placeholder=""> <span class="help-block">Informe o Numero de viajantes no campo acima </span> 
-                                                                       
+                                                                            <input type="text" class="form-control" name="viajantes" value="{{ old('viajantes') }}"> <span class="help-block">Informe o Numero de viajantes no campo acima </span> 
+                                                                            @if ($errors->has('viajantes'))
+                                                                                <span class="text-danger">
+                                                                                    <strong>{{ $errors->first('viajantes') }}</strong>
+                                                                                </span>
+                                                                            @endif
                                                                     </div>
                                                                 </div>
                                                                 <!--/span-->
@@ -71,9 +75,9 @@
                                                                     <div class="form-group">
                                                                             <label class="col-sm-12">Tipo de Passagem</label>
                                                                             <div class="col-sm-12">
-                                                                                <select class="form-control">
-                                                                                    <option>So ida</option>
-                                                                                    <option>Ida e Volta</option>                                                                                    
+                                                                                <select class="form-control" name="tipoReserva">
+                                                                                    <option value="1">So ida</option>
+                                                                                    <option value="2">Ida e Volta</option>                                                                                    
                                                                                 </select>
                                                                             </div>
                                                                     </div>
@@ -86,8 +90,12 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label">Ponto de Partida</label>
                                                                            
-                                                                                <input type="text" class="form-control" placeholder=""> <span class="help-block">Informe o ponto de partida </span> 
-                                                                            
+                                                                                <input type="text" class="form-control" name="ppartida" value="{{ old('ppartida') }}"> <span class="help-block">Informe o ponto de partida </span> 
+                                                                                @if ($errors->has('ppartida'))
+                                                                                    <span class="text-danger">
+                                                                                        <strong>{{ $errors->first('ppartida') }}</strong>
+                                                                                    </span>
+                                                                                @endif
                                                                         </div>
                                                                     </div>
                                                                     <!--/span-->
@@ -95,8 +103,12 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label">Destino</label>
                                                                            
-                                                                                <input type="text" class="form-control" placeholder=""> <span class="help-block"> Informe o ponto de partida </span> 
-                                                                           
+                                                                                <input type="text" class="form-control" name="destino" value="{{ old('destino') }}"> <span class="help-block"> Informe o ponto de partida </span> 
+                                                                                @if ($errors->has('destino'))
+                                                                                    <span class="text-danger">
+                                                                                        <strong>{{ $errors->first('destino') }}</strong>
+                                                                                    </span>
+                                                                                @endif
                                                                         </div>
                                                                     </div>
                                                                     <!--/span-->
@@ -109,10 +121,16 @@
                                                             <div class="row">
                                                                     <div class="col-md-6">
                                                                             <div class="example">
-                                                                                    <label class="control-label">Duraçao do Pacote</label>
+                                                                                    <label class="control-label">Duraçao da Viagem </label>
                                                                                     <p class="text-muted m-b-20"> Selecione o principio e o fim da Estadia no destino</p>
                                                                                     <div class="input-daterange input-group" id="date-range">
-                                                                                        <input type="text" class="form-control" name="start" />
+                                                                                        <input type="text" class="form-control" name="start" value="{{ old('start') }}"/> <span class="input-group-addon bg-info b-0 text-white">Até</span>
+                                                                                        <input type="text" class="form-control" name="end" value="{{ old('end') }}" /> 
+                                                                                        @if ($errors->has('end'))
+                                                                                            <span class="text-danger">
+                                                                                                <strong>{{ $errors->first('end') }}</strong>
+                                                                                            </span>
+                                                                                        @endif
                                                                                         
                                                                                     </div>
                                                                                 </div>
@@ -120,7 +138,12 @@
                                                                     <div class="col-md-6">
                                                                             <div class="form-group">
                                                                                 <label class="control-label">Descriçao</label>
-                                                                                <textarea class="form-control" rows="5"></textarea>
+                                                                                <textarea class="form-control" rows="5" name="descricao"> {{ old('descricao') }} </textarea>
+                                                                                @if ($errors->has('descricao'))
+                                                                                    <span class="text-danger">
+                                                                                        <strong>{{ $errors->first('descricao') }}</strong>
+                                                                                    </span>
+                                                                                @endif
                                                                             </div>
                                                                     </div>
                                                                         <!--/span-->

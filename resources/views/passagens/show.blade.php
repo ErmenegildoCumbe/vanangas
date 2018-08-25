@@ -9,7 +9,7 @@
     <div class="row bg-title">
         <!-- .page title -->
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">Editar Pedido de Passagem</h4> </div>
+            <h4 class="page-title">Detalhes do Pedido de Passagem</h4> </div>
         <!-- /.page title -->
         <!-- .breadcrumb -->
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> 
@@ -18,7 +18,7 @@
             <ol class="breadcrumb">
                 <li><a href="#">Vanangas</a></li>
                 <li><a href="#">Pedidos de Passagem</a></li>
-                <li class="active">Editar</li>
+                <li class="active">Detalhes</li>
             </ol>
         </div>
         <!-- /.breadcrumb -->
@@ -27,7 +27,7 @@
     <div class="col-lg-12 col-sm-12 col-xs-12">
         <div class="white-box">
             <h3 class="box-title">Requisiçao de Passagem</h3>
-            <p class="text-muted m-b-30">Informe todos dados referentes a Requisiçao </p>
+            <p class="text-muted m-b-30">Veja todos dados referentes a Requisiçao </p>
             <div class="vtabs">
                 <ul class="nav tabs-vertical">
                     <li class="tab active">
@@ -47,7 +47,7 @@
                     <div id="basicas" class="tab-pane active">
                                 <div class="panel panel-info">
                                             <div class="panel-heading"> 
-                                                Insira os dados da Requisiçao
+                                                Informaçao Básica da Requisiçao
                                             </div>
                                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                                 <div class="panel-body">
@@ -150,7 +150,7 @@
                                                                 <div class="col-md-6">
                                                                     <div class="row">
                                                                         <div class="col-md-offset-3 col-md-9">
-                                                                            <button type="submit" class="btn btn-success">Actualizar</button>
+                                                                            <button type="submit" class="btn btn-success">Aprovar</button>
                                                                             <button type="button" class="btn btn-default">Cancel</button>
                                                                         </div>
                                                                     </div>
@@ -165,9 +165,9 @@
                     </div>
                     <div id="viajantes" class="tab-pane">
                         <div class="row" style="margin: auto;">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" 
+                                {{--  <button type="button" class="btn btn-primary" data-toggle="modal" 
                                     data-target="#addpassenger" data-whatever="@mdo">Adicionar Viajante
-                                </button>
+                                </button>  --}}
                                 <div class="modal fade bs-example-modal-lg" id="addpassenger" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
                                         <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
@@ -250,8 +250,7 @@
                                                         </form>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Send message</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>                                                   
                                                 </div>
                                             </div>
                                         </div>
@@ -266,64 +265,36 @@
                                             <table class="table table-hover manage-u-table">
                                                 <thead>
                                                     <tr>
-                                                        <th width="70" class="text-center">#</th>
-                                                        <th>NOME</th>
-                                                        <th>SEXO</th>
-                                                        <th>TIPO</th>
-                                                        <th>DATA DE NASCIMENTO</th>                                                        
-                                                        <th>MANAGE</th>
+                                                            <th width="70" class="text-center">#</th>
+                                                            <th>NOME</th>
+                                                            <th>SEXO</th>
+                                                            <th>TIPO</th>
+                                                            <th>DATA DE NASCIMENTO</th>                                                        
+                                                            <th>Forma de Tratamento</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td class="text-center">1</td>
-                                                        <td>Daniel Kristeen
-                                                            <br/><span class="text-muted">Texas, Unitedd states</span></td>
-                                                        <td>Feminino</td>
-                                                        <td>daniel@website.com
-                                                            <br/><span class="text-muted">999 - 444 - 555</span></td>
-                                                        <td>15 Mar 1988
-                                                            <br/><span class="text-muted">10: 55 AM</span></td>
-                                                     
-                                                        <td>                                                            
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-20"><i class="ti-upload"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">2</td>
-                                                        <td>Daniel Kristeen
-                                                            <br/><span class="text-muted">Texas, Unitedd states</span></td>
-                                                        <td>Feminino</td>
-                                                        <td>daniel@website.com
-                                                            <br/><span class="text-muted">999 - 444 - 555</span></td>
-                                                        <td>15 Mar 1988
-                                                            <br/><span class="text-muted">10: 55 AM</span></td>
-                                                     
-                                                        <td>                                                            
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-20"><i class="ti-upload"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">3</td>
-                                                        <td>Daniel Kristeen
-                                                            <br/><span class="text-muted">Texas, Unitedd states</span></td>
-                                                        <td>Masculino </td>
-                                                        <td>daniel@website.com
-                                                            <br/><span class="text-muted">999 - 444 - 555</span></td>
-                                                        <td>15 Mar 1988
-                                                            <br/><span class="text-muted">10: 55 AM</span></td>
-                                                        
-                                                        <td>                                                            
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-20"><i class="ti-upload"></i></button>
-                                                        </td>
-                                                    </tr>                        
-                                                                                                 
+                                                        <?php  $i=0; ?>
+                                                        @foreach ($passageiros as $passageiro) 
+                                                            <tr>
+                                                                <td class="text-center"> <?php echo ++$i; ?> </td>
+                                                                <td> {{ $passageiro->nome}} {{ $passageiro->apelido}}</td>
+                                                                <td>{{ $passageiro->sexo}}</td>
+                                                                <td> <?php if ( $passageiro->tipo ==1){
+                                                                        echo "Adulto";    
+                                                                    }
+                                                                        else if($passageiro->tipo ==2){
+                                                                            echo "Criança";
+                                                                        }
+                                                                        else
+                                                                            echo "Bébé"; ?> </td>
+                                                                <td> {{ $passageiro->data_nascimento}} </td>
+                                                            
+                                                                <td>                                                            
+                                                                    {{ $passageiro->forma_tratamento}}
+                                                                </td>
+                                                            </tr>  
+                                                        @endforeach                                              
                                                 </tbody>
                                             </table>
                                         </div>
@@ -342,68 +313,72 @@
                                         <div class="panel-body">
                                             <form action="#" class="form-material form-horizontal">
                                                     {{ csrf_field() }}
-                                                <div class="form-body">
-                                                    <h3 class="box-title">Contacto Principal</h3>
-                                                    <hr class="m-t-0 m-b-40">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label class="control-label">Email</label>                                                                
-                                                                    <input type="email" class="form-control" placeholder=""> <span class="help-block">Informe o Numero de viajantes no campo acima </span> 
-                                                               
-                                                            </div>
-                                                        </div>
-                                                        <!--/span-->
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label class="control-label">Telefone</label>
-                                                                
-                                                                    <input type="text" class="form-control" placeholder=""> <span class="help-block"> Pode indicar o meio de Transporte preferencial </span> 
-                                                               
-                                                            </div>
-                                                        </div>
-                                                        <!--/span-->
-                                                    </div>
-                                                    <!--/row-->
-                                                    <h3 class="box-title">Contacto de Emergência</h3>
-                                                            <hr class="m-t-0 m-b-40">
-                                                    <div class="row">
+                                                    <div class="form-body">
+                                                        <h3 class="box-title">Contacto Principal</h3>
+                                                        <hr class="m-t-0 m-b-40">
+                                                        <div class="row">
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
-                                                                    <label class="control-label">Email</label>
-                                                                   
-                                                                        <input type="email" class="form-control" placeholder=""> <span class="help-block">Informe o ponto de partida </span> 
-                                                                    
+                                                                    <label class="control-label">Email</label>                                                                
+                                                                        <input type="email" class="form-control" name="pincipemail" value="<?php if(isset($contacto->emailprincipal)) echo $contacto->emailprincipal; ?> "> <span class="help-block">Informe o Numero de viajantes no campo acima </span> 
+                                                                        @if ($errors->has('pincipemail'))
+                                                                            <span class="text-danger">
+                                                                                <strong>{{ $errors->first('pincipemail') }}</strong>
+                                                                            </span>
+                                                                        @endif 
                                                                 </div>
                                                             </div>
                                                             <!--/span-->
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label class="control-label">Telefone</label>
-                                                                   
-                                                                        <input type="text" class="form-control" placeholder=""> <span class="help-block"> Informe o ponto de partida </span> 
-                                                                   
+                                                                    
+                                                                        <input type="text" class="form-control" name="principtelefone" value="<?php if(isset($contacto->telefoneprincipal)) echo $contacto->telefoneprincipal; ?> "> <span class="help-block"> Pode indicar o meio de Transporte preferencial </span> 
+                                                                        @if ($errors->has('principtelefone'))
+                                                                            <span class="text-danger">
+                                                                                <strong>{{ $errors->first('principtelefone') }}</strong>
+                                                                            </span>
+                                                                        @endif 
                                                                 </div>
                                                             </div>
                                                             <!--/span-->
-                                                    </div>
-                                        
-                                                    <!--/row-->
-                                                
-                                                </div>
-                                                <div class="form-actions">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="row">
-                                                                <div class="col-md-offset-3 col-md-9">
-                                                                    <button type="submit" class="btn btn-success">Actualizar</button>
-                                                                    <button type="button" class="btn btn-default">Cancel</button>
-                                                                </div>
-                                                            </div>
                                                         </div>
-                                                        <div class="col-md-6"> </div>
+                                                        <!--/row-->
+                                                        <h3 class="box-title">Contacto de Emergência</h3>
+                                                                <hr class="m-t-0 m-b-40">
+                                                        <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label">Email</label>
+                                                                       
+                                                                            <input type="email" class="form-control" name="emergemail" value="<?php if(isset($contacto->emailemergencia)) echo $contacto->emailemergencia; ?>"> <span class="help-block">Informe o ponto de partida </span> 
+                                                                            @if ($errors->has('emergemail'))
+                                                                                <span class="text-danger">
+                                                                                    <strong>{{ $errors->first('emergemail') }}</strong>
+                                                                                </span>
+                                                                            @endif 
+                                                                    </div>
+                                                                </div>
+                                                                <!--/span-->
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label">Telefone</label>
+                                                                       
+                                                                            <input type="text" class="form-control" name="emergtelefone" value="<?php if(isset($contacto->telefoneemergencia)) echo $contacto->telefoneemergencia; ?>"> <span class="help-block"> Informe o ponto de partida </span> 
+                                                                            @if ($errors->has('emergtelefone'))
+                                                                                <span class="text-danger">
+                                                                                    <strong>{{ $errors->first('emergtelefone') }}</strong>
+                                                                                </span>
+                                                                            @endif 
+                                                                    </div>
+                                                                </div>
+                                                                <!--/span-->
+                                                        </div>
+                                            
+                                                        <!--/row-->
+                                                    
                                                     </div>
-                                                </div>
+                                                   
                                             </form>
                                         </div>
                                     </div>

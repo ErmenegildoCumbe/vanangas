@@ -67,7 +67,7 @@ class CustomAuthController extends Controller
         'password' => 'required|string|min:6|confirmed',
         'fname' =>'required|string|max:145',
         'lname' =>'string|max:45',
-        'phone' =>'string|max:15',
+        'phone' =>'nullable|string|max:15',
        ]);
    }
 }

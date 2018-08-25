@@ -225,10 +225,10 @@
                     <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Passagens<span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
                             <li> <a href="{{ route('pedidoPassagem.create') }}"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Requisitar Passagem</span></a> </li>
-                            <li> <a href="{{ route('pedidospassagem') }}"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Requisiçoes</span></a> </li>
+                            <li> <a href="{{ route('pedidoPassagem.index') }}"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Requisiçoes</span></a> </li>
                             <li> <a href="{{ route('pedidospassagemconfirmados') }}"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Requisiçoes Confirmadas</span></a> </li>
                             <li> <a href="{{ route('pedidospassagemCancelados') }}"><i data-icon="7" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Requisiçoes Canceladas</span></a> </li>
-                            <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="&#xe008;" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu"> Minhas Passagens </span><span class="fa arrow"></span></a>
+                            <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="&#xe008;" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu"> Minhas Requisiçoes </span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
                                     <li> <a href="{{ route('meuspendentes') }}"><i class=" fa-fw">T</i><span class="hide-menu">Pendentes</span></a> </li>
                                     <li> <a href="{{ route('meusconfirmados') }}"><i class=" fa-fw">M</i><span class="hide-menu">Confirmadas</span></a> </li>

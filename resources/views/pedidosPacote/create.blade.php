@@ -64,7 +64,7 @@
                                                                         
                                                                             <input type="text" class="form-control" name="nrviajantes" value="{{ old('nrviajantes') }}"> <span class="help-block">Informe o Numero de viajantes no campo acima </span> 
                                                                             @if ($errors->has('nrviajantes'))
-                                                                            <span class="help-block">
+                                                                            <span class="text-danger">
                                                                                 <strong>{{ $errors->first('nrviajantes') }}</strong>
                                                                             </span>
                                                                             @endif
@@ -77,7 +77,7 @@
                                                                         
                                                                             <input type="text" class="form-control" name="transporte" value="{{ old('transporte') }}"> <span class="help-block"> Pode indicar o meio de Transporte preferencial </span> 
                                                                             @if ($errors->has('transporte'))
-                                                                            <span class="help-block">
+                                                                            <span class="text-danger">
                                                                                 <strong>{{ $errors->first('transporte') }}</strong>
                                                                             </span>
                                                                             @endif
@@ -93,7 +93,7 @@
                                                                            
                                                                                 <input type="text" class="form-control" name="partida"  value="{{ old('partida') }}"> <span class="help-block">Informe o ponto de partida </span> 
                                                                                 @if ($errors->has('partida'))
-                                                                                <span class="help-block">
+                                                                                <span class="text-danger">
                                                                                     <strong>{{ $errors->first('partida') }}</strong>
                                                                                 </span>
                                                                                 @endif
@@ -106,7 +106,7 @@
                                                                            
                                                                                 <input type="text" class="form-control" name="destino" value="{{ old('destino') }}"> <span class="help-block"> Informe o ponto de partida </span> 
                                                                                 @if ($errors->has('destino'))
-                                                                                    <span class="help-block">
+                                                                                    <span class="text-danger">
                                                                                         <strong>{{ $errors->first('destino') }}</strong>
                                                                                     </span>
                                                                                 @endif
@@ -128,7 +128,7 @@
                                                                                         <input type="text" class="form-control" name="start" value="{{ old('start') }}"/> <span class="input-group-addon bg-info b-0 text-white">Até</span>
                                                                                         <input type="text" class="form-control" name="end" value="{{ old('end') }}" /> 
                                                                                         @if ($errors->has('end'))
-                                                                                            <span class="help-block">
+                                                                                            <span class="text-danger">
                                                                                                 <strong>{{ $errors->first('end') }}</strong>
                                                                                             </span>
                                                                                         @endif
@@ -141,7 +141,7 @@
                                                                                 <label class="control-label">Descriçao</label>
                                                                                 <textarea class="form-control" rows="5" name="descricao" value="{{ old('descricao') }}"></textarea>
                                                                                 @if ($errors->has('descricao'))
-                                                                                    <span class="help-block">
+                                                                                    <span class="text-danger">
                                                                                         <strong>{{ $errors->first('descricao') }}</strong>
                                                                                     </span>
                                                                                 @endif

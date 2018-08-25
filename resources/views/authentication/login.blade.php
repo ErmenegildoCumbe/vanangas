@@ -52,7 +52,7 @@
                         <label>Email</label>
                         <input class="form-control" type="text" required="" name="email" value="{{ old('email') }}" placeholder="Username">
                         @if ($errors->has('email'))
-                        <span class="help-block">
+                        <span class="text-danger">
                             <strong>{{ $errors->first('email') }}</strong>
                         </span>
                         @endif
@@ -63,7 +63,7 @@
                         <label>Senha</label>
                         <input class="form-control" type="password" name="password" required="" placeholder="Password">
                         @if ($errors->has('password'))
-                        <span class="help-block">
+                        <span class="text-danger">
                             <strong>{{ $errors->first('password') }}</strong>
                         </span>
                         @endif

@@ -20,5 +20,10 @@ class UserPermissionsTableSeeder extends Seeder
             'permission_id' => '2', 
             'user_id' => '2',           
         ]);
+
+        DB::table('user_permissions')->insert([
+            'permission_id' => '3', 
+            'user_id' => '3',           
+        ]);
     }
 }

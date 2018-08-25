@@ -32,66 +32,35 @@
                 <table class="table table-hover manage-u-table color-bordered-table muted-bordered-table">
                     <thead>
                         <tr>
-                            <th width="70" class="text-center">#</th>
-                            <th>Ponto de Partida</th>
-                            <th>Ponto de Chegada</th>
-                            <th>Início</th>
-                            <th>Término</th>                            
-                            <th width="300">Opçoes</th>
+                                <th width="70" class="text-center">#</th>                                
+                                <th>Viajantes</th>
+                                <th>Ponto de Partida</th>
+                                <th>Ponto de Chegada</th>
+                                <th>Data de Partida</th>                            
+                                <th width="300">Opçoes</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>Daniel Kristeen
-                                <br/><span class="text-muted">Texas, Unitedd states</span></td>
-                            <td>Visual Designer
-                                <br/><span class="text-muted">Past : teacher</span></td>
-                            <td>15 Mar 1988</td>
-                            <td>15 Mar 1988</td>
-                         
-                            <td>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-key"></i></button>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">2</td>
-                            <td>Daniel Kristeen
-                                <br/><span class="text-muted">Texas, Unitedd states</span></td>
-                            <td>Visual Designer
-                                <br/><span class="text-muted">Past : teacher</span></td>
-                            <td>15 Mar 1988</td>
-                            <td>15 Mar 1988</td>
-                         
-                            <td>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-key"></i></button>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">3</td>
-                            <td>Daniel Kristeen
-                                <br/><span class="text-muted">Texas, Unitedd states</span></td>
-                            <td>Visual Designer
-                                <br/><span class="text-muted">Past : teacher</span></td>
-                            <td>15 Mar 1988</td>
-                            <td>15 Mar 1988</td>
-                         
-                            <td>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-key"></i></button>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
-                                
-                            </td>
-                        </tr>
-                       
-                        
-                        
+                            <?php  $i=0; ?>
+                            @foreach ($pedidos as $pedido)
+                           
+                            <tr>
+                                <td class="text-center"> <?php echo ++$i; ?> </td>
+                                <td> {{ $pedido->nr_passageiros }} </td>
+                                <td> {{ $pedido->ponto_partida }} </td>
+                                <td> {{ $pedido->ponto_chegada }} </td>
+                                <td> {{ $pedido->data_partida }} </td>
+                             
+                                <td>
+                                    
+                                    
+                                    <a href="{{ route('showcanceled', ['id'=>$pedido->id]) }}" type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-eye"></i></a>
+                                    
+                                </td>
+                            </tr>
+                                 
+                            @endforeach
+                             
                     </tbody>
                 </table>
             </div>
