@@ -103,7 +103,7 @@ class PacoteController extends Controller
     protected function validation($request){
         return $this->validate($request, [
          'designacao' => 'required|string|max:55',
-         'descricao' => 'required|string|max:255',
+         'descricao' => 'required|string',
          'start' =>'required|date',
          'end' =>'required|date',
          'local' =>'required|string|max:115',         
@@ -118,9 +118,8 @@ class PacoteController extends Controller
         $foto1 = new FotoPacote;
         if(isset($request->img1)){
             $path = $request->img1->store('public/images/pacotes');
-            $arrayy = explode("/",$path);
-            $arrayy[0] = "storage";
-            $foto->designacao = $arrayy[0]."/".$arrayy[1]."/".$arrayy[2]."/".$arrayy[3];
+            $arrayy = explode("/",$path);            
+            $foto->designacao = "storage/images/pacotes/".$arrayy[3];
             $foto->pacote_viagems_id = $request->pacotecod;
             $foto->tipo = 1;
             $foto->save();

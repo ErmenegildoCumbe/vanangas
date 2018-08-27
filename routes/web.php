@@ -49,15 +49,15 @@ Route::get('pedidoPassagem/meus/cancelados', 'PedidoPassagemController@meusCance
 Route::get('pedidoPassagem/meus/{id}/cancelado', 'PedidoPassagemController@showOwenPedido')->name('showcanceled');
 
 //rotas de users
-Route::resource('operadores', 'OperadorsController');
-Route::post('operadores/add', 'OperadorsController@storeajax')->name('addopera');
-Route::get('operadores/editstate/{id}', 'OperadorsController@editstatus')->name('updatestate');
-Route::resource('administradores', 'AdministradorController');
-Route::get('administradores/editstate/{id}', 'AdministradorController@editstatus')->name('updatestateadmin');
+Route::resource('operadores', 'OperadorsController')->middleware('admin');
+Route::post('operadores/add', 'OperadorsController@storeajax')->name('addopera')->middleware('admin');
+Route::get('operadores/editstate/{id}', 'OperadorsController@editstatus')->name('updatestate')->middleware('admin');
+Route::resource('administradores', 'AdministradorController')->middleware('admin');
+Route::get('administradores/editstate/{id}', 'AdministradorController@editstatus')->name('updatestateadmin')->middleware('admin');
 Route::resource('clientes', 'ClienteController');
 Route::get('utilizadores/create', function () {
     return view('utilizadores.create');
-})->name('userscreate'); 
+})->name('userscreate')->middleware('admin'); 
 
 Route::get('utilizadores/activos', function () {
     return view('utilizadores.users');
