@@ -15,6 +15,15 @@ class Operador
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        $confirmation = false;
+        foreach (Auth::user()->permissions as $permission) {
+            if($permission->name == "Operador"){
+                $confirmation = true;
+            }
+        }
+        if($confirmation){
+            return $next($request);
+        } 
+        return redirect()->back();       
     }
 }
