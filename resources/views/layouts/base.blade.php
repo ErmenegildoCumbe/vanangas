@@ -23,8 +23,7 @@
 
     <link href="{{ asset('css/owencss/colors/default.css') }}" id="theme" rel="stylesheet">
     @yield("css")
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    
     <!--[if lt IE 9]>
        
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -238,6 +237,9 @@
                             </li>
                         </ul>
                     </li>
+                    {{--  @can('isAdmin', App\User::class)  --}}
+                        
+                    
                     <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Utilizadores<span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
                             <li> <a href="{{ route('userscreate') }}"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Criar Novo</span></a> </li>
@@ -247,6 +249,7 @@
              
                         </ul>
                     </li>
+                    {{--  @endcan  --}}
                     <li> <a href="javascript:void(0)" class="waves-effect"><i data-icon="" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Companhias de Viagem<span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
                             <li> <a href="javascript:void(0)"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Criar Nova</span></a> </li>

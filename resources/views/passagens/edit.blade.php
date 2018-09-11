@@ -31,7 +31,7 @@
             <div class="vtabs">
                 <ul class="nav tabs-vertical">
                     <li class="tab active">
-                        <a data-toggle="tab" href="#basicas" aria-expanded="true"> <span class="visible-xs"><i class="ti-home"></i></span> <span class="hidden-xs">Informaços do Pedido</span> </a>
+                        <a data-toggle="tab" href="#basicas" aria-expanded="true"> <span class="visible-xs"><i class="ti-home"></i></span> <span class="hidden-xs">Informaçoes do Pedido</span> </a>
                     </li>
                     <li class="tab">
                         <a data-toggle="tab" href="#viajantes" aria-expanded="false"> <span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">Viajantes</span> </a>
@@ -275,55 +275,29 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td class="text-center">1</td>
-                                                        <td>Daniel Kristeen
-                                                            <br/><span class="text-muted">Texas, Unitedd states</span></td>
-                                                        <td>Feminino</td>
-                                                        <td>daniel@website.com
-                                                            <br/><span class="text-muted">999 - 444 - 555</span></td>
-                                                        <td>15 Mar 1988
-                                                            <br/><span class="text-muted">10: 55 AM</span></td>
-                                                     
-                                                        <td>                                                            
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-20"><i class="ti-upload"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">2</td>
-                                                        <td>Daniel Kristeen
-                                                            <br/><span class="text-muted">Texas, Unitedd states</span></td>
-                                                        <td>Feminino</td>
-                                                        <td>daniel@website.com
-                                                            <br/><span class="text-muted">999 - 444 - 555</span></td>
-                                                        <td>15 Mar 1988
-                                                            <br/><span class="text-muted">10: 55 AM</span></td>
-                                                     
-                                                        <td>                                                            
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-20"><i class="ti-upload"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">3</td>
-                                                        <td>Daniel Kristeen
-                                                            <br/><span class="text-muted">Texas, Unitedd states</span></td>
-                                                        <td>Masculino </td>
-                                                        <td>daniel@website.com
-                                                            <br/><span class="text-muted">999 - 444 - 555</span></td>
-                                                        <td>15 Mar 1988
-                                                            <br/><span class="text-muted">10: 55 AM</span></td>
+                                                        <?php  $i=0; ?>
+                                                    @foreach ($passageiros as $passageiro) 
+                                                        <tr>
+                                                            <td class="text-center"> <?php echo ++$i; ?> </td>
+                                                            <td> {{ $passageiro->nome}} {{ $passageiro->apelido}}</td>
+                                                            <td>{{ $passageiro->sexo}}</td>
+                                                            <td> <?php if ( $passageiro->tipo ==1){
+                                                                    echo "Adulto";    
+                                                                }
+                                                                    else if($passageiro->tipo ==2){
+                                                                        echo "Criança";
+                                                                    }
+                                                                    else
+                                                                        echo "Bébé"; ?> </td>
+                                                            <td> {{ $passageiro->data_nascimento}} </td>
                                                         
-                                                        <td>                                                            
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
-                                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-20"><i class="ti-upload"></i></button>
-                                                        </td>
-                                                    </tr>                        
-                                                                                                 
+                                                            <td>                                                            
+                                                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>
+                                                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
+                                                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-20"><i class="ti-upload"></i></button>
+                                                            </td>
+                                                        </tr>  
+                                                    @endforeach                                                                                             
                                                 </tbody>
                                             </table>
                                         </div>

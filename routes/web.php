@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('home');
-})->middleware('auth');
+})->middleware('auth')->name('home');
 
 Route::get('/home', function () {
     return view('home');
@@ -21,6 +21,10 @@ Route::get('/home', function () {
 
 Route::get('pacote/requisitar', function () {
     return view('pacotes.requisitar');
+});
+//Retornando pagina de erro
+Route::fallback(function () {
+    return view('404');
 });
  
 //Rotas pacote de viagem

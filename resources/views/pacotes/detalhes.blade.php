@@ -88,30 +88,32 @@
                 <div id="messages3" class="tab-pane">
                         <div class="col-md-12 col-lg-12 col-sm-12">
                                 <div class="white-box">
-                                    <h3 class="box-title">Comentários Recentes Comentários Recentes</h3>
+                                    <h3 class="box-title">Comentários Recentes </h3>
                                     <div class="comment-center p-t-10">
                                         <div class="comment-body">
                                             <div class="user-img"> <img src="{{ asset('images/template/users/pawandeep.jpg') }}" alt="user" class="img-circle"></div>
                                             <div class="mail-contnet">
-                                                <h5>Pavan kumar</h5><span class="time">10:20 AM   20  may 2016</span> <span class="label label-rouded label-info">PENDING</span>
-                                                <br/><span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. Aenean commodo dui pellentesque molestie feugiat</span> <a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i>Approve</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Reject</a> </div>
+                                                <h5>Pavan kumar</h5><span class="time">10:20 AM   20  may 2016</span> 
+                                                <br/><span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. Aenean commodo dui pellentesque molestie feugiat</span> 
+                                            </div>
                                         </div>
                                         <div class="comment-body">
                                             <div class="user-img"> <img src="{{ asset('images/template/users/sonu.jpg') }}" alt="user" class="img-circle"> </div>
                                             <div class="mail-contnet">
-                                                <h5>Sonu Nigam</h5><span class="time">10:20 AM   20  may 2016</span> <span class="label label-rouded label-success">APPROVED</span>
+                                                <h5>Sonu Nigam</h5><span class="time">10:20 AM   20  may 2016</span> 
                                                 <br/><span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. Aenean commodo dui pellentesque molestie feugiat</span> </div>
                                         </div>
                                         <div class="comment-body b-none">
                                             <div class="user-img"> <img src="{{ asset('images/template/users/arijit.jpg') }}" alt="user" class="img-circle"> </div>
                                             <div class="mail-contnet">
-                                                <h5>Arijit singh</h5><span class="time">10:20 AM   20  may 2016</span> <span class="label label-rouded label-danger">REJECTED</span>
+                                                <h5>Arijit singh</h5><span class="time">10:20 AM   20  may 2016</span>
                                                 <br/><span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. Aenean commodo dui pellentesque molestie feugiat</span> </div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                     <div class="row">
+                                        <hr><hr>
                                             <div class="col-xs-8">
                                                 <textarea placeholder="Introduza a tua mensagem aqui" class="chat-box-input"></textarea>
                                             </div>
@@ -159,7 +161,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="exampleModalLabel1">Inserçao de Operador</h4> 
+                    <h4 class="modal-title" id="exampleModalLabel1">Informe os dados da sua Requisiçao</h4> 
                 </div>
                 <div class="modal-body col-md-offset-1 col-sm-offset-1">
                         <form action="{{ route('addPedidoViaPacote', ['id'=>$pacote->id]) }}" class="form-material form-horizontal" id="formrequestpedido" method="POST">
