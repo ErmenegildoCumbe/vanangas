@@ -85,7 +85,7 @@ class CustomAuthController extends Controller
         }
         catch(\Exception $e)
         {
-            return redirect('/hgghg');
+            return redirect('/');
         }
         //$user = Socialite::driver($service)->stateless()->user();
         $socialProvider = SocialProvider::where('client_id', $socialUser->getId())->first();

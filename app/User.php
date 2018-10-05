@@ -42,6 +42,6 @@ class User extends Authenticatable
     }
     public function socialProviders()
     {
-        return $this->belongsToMany('App\SocialProvider','users_id');
+        return $this->hasMany('App\SocialProvider','users_id');
     }
 }
