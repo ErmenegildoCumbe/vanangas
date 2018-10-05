@@ -7,6 +7,8 @@ use App\User;
 use App\Cliente;
 use App\UserPermission;
 use Auth;
+use Socialite;
+use App\SocialProvider;
 
 class CustomAuthController extends Controller
 {
@@ -70,4 +72,48 @@ class CustomAuthController extends Controller
         'phone' =>'nullable|string|max:15',
        ]);
    }
+   public function redirectToProvider($service)
+    {
+        return Socialite::driver($service)->redirect();
+    }
+
+    public function handleProviderCallback($service)
+    {
+        try
+        {
+            $socialUser = Socialite::driver($service)->stateless()->user();
+        }
+        catch(\Exception $e)
+        {
+            return redirect('/hgghg');
+        }
+        //$user = Socialite::driver($service)->stateless()->user();
+        $socialProvider = SocialProvider::where('client_id', $socialUser->getId())->first();
+        // $user->token;
+        if (!$socialProvider) {            
+            $user = User::firstOrCreate(
+                ['email' => $socialUser->getEmail()],
+                ['nome' => $socialUser->getName()]                
+            );
+            $aa = $user->socialProviders()->create(
+                ['client_id' => $socialUser->getId(), 'provider' => $service, 'users_id' => $user->id]
+            );
+            //Save userpermissions
+            $userpermission = new UserPermission;
+            $userpermission->permission_id = 3;
+            $userpermission->user_id = $user->id;
+            $userpermission->save();
+            //Save Cliente
+            $cliente = new Cliente;
+            $cliente->estado = 1;
+            $cliente->tipoCliente = 1;
+            $cliente->users_id = $user->id;
+            $cliente->save();
+         }
+         else
+             $user = $socialProvider->user;
+             auth()->login($user);
+             return redirect('/home');
+ 
+    }
 }

@@ -40,4 +40,8 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Cliente', 'users_id');
     }
+    public function socialProviders()
+    {
+        return $this->belongsToMany('App\SocialProvider','users_id');
+    }
 }

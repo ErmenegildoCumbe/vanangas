@@ -19,10 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('apelido')->nullable();
             $table->string('email')->unique();
             $table->string('telefone')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->string('foto_perfil')->nullable();
-            $table->integer('tipoUsuario');
-            $table->integer('estado');
+            $table->integer('tipoUsuario')->default(3);
+            $table->integer('estado')->default(1);
             $table->integer('enderecos_id')->unsigned()->nullable();
             $table->foreign('enderecos_id')->references('id')->on('enderecos');
             $table->rememberToken();

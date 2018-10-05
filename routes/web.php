@@ -90,3 +90,6 @@ Route::post('logout', 'CustomAuthController@logout')->name('logout');
 //Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
+//OAuthRoutes...
+Route::get('login/{service}', 'CustomAuthController@redirectToProvider');
+Route::get('login/{service}/callback', 'CustomAuthController@handleProviderCallback');
