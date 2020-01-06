@@ -36,7 +36,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="white-box">
                 <div class="product-img">
-                    <img src="{{ asset('images/template/chair.jpg') }}" />
+                    <img src="{{ asset('images/praia.jpg') }}" />
                     <div class="pro-img-overlay"> <a href="{{ route('pacote.show', ['id'=> $pacote->id]) }}" class="bg-danger"><i class="material-icons">
                         details
                         </i></a></div>

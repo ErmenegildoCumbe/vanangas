@@ -33,7 +33,7 @@
 <section id="wrapper" class="new-login-register">
       <div class="lg-info-panel">
               <div class="inner-panel">
-                  <a href="javascript:void(0)" class="p-20 di"><img src="{{ asset('images/admin-logo.png') }}"></a>
+                  {{--  <a href="javascript:void(0)" class="p-20 di"><img src="{{ asset('images/admin-logo.png') }}"></a>  --}}
                   <div class="lg-content">
                       <h2>BEM VINDO AO SISTEMA DE RESERVAS E CONFIRMACAO DE PACOTES DE VIAGEM E PASSAGENS AÉREAS DA VANANGAS</h2>
                       <p class="text-muted">Encontre todas ofertas que a VANANGAS tem para si ou faça sua propria requisicao, e mais... </p>

@@ -123,7 +123,10 @@ class PacoteController extends Controller
             $foto->pacote_viagems_id = $request->pacotecod;
             $foto->tipo = 1;
             $foto->save();
-
+            $pacote = PacoteViagem::find( $foto->pacote_viagems_id);
+            //if($pacote->imagem_principal == ''){
+                $pacote->imagem_principal = $foto->designacao;
+            //}
         }
         if(isset($request->img2)){
             $path2 = $request->img2->store('public/images/pacotes');
@@ -133,6 +136,10 @@ class PacoteController extends Controller
             $foto1->pacote_viagems_id = $request->pacotecod;
             $foto1->tipo = 1;
             $foto1->save();
+            //$pacote = PacoteViagem::find( $foto1->pacote_viagems_id);
+            //if($pacote->imagem_principal == ''){
+                $pacote->imagem_principal = $foto1->designacao;
+            //}
         }
         return redirect()->back();
     }
